@@ -212,10 +212,9 @@ h3 {
 
 .hero {
   min-height: calc(100vh - var(--nav-height));
-
   display: grid;
-  grid-template-columns: 68.5% 31.5%;
-
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
   background: var(--cream);
 }
 
@@ -245,8 +244,8 @@ h3 {
 }
 
 .hero-image {
+  width: 100%;
   height: 60vh;
-  align-self: center;
   overflow: hidden;
 }
 
