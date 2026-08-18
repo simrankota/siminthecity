@@ -1404,3 +1404,113 @@ main {
     transition: none !important;
   }
 }
+
+/* =========================================================
+   FINAL DESKTOP CORRECTIONS
+   ========================================================= */
+
+@media (min-width: 721px) {
+
+  /* NAV: restore the brown gradient and make the logo visible at the intended size */
+  .site-nav {
+    background: linear-gradient(
+      90deg,
+      var(--header-dark) 0%,
+      var(--header-mid) 52%,
+      var(--header-light) 100%
+    );
+  }
+
+  .nav-brand {
+    width: 70px;
+    height: 70px;
+  }
+
+  .nav-brand img {
+    width: 64px;
+    height: 64px;
+  }
+
+  /* HERO: taller viewport fill, slightly wider image, keep the established composition */
+  .hero {
+    height: 100vh;
+    min-height: 760px;
+    max-height: none;
+    grid-template-columns:
+      minmax(0, 1.38fr)
+      minmax(450px, 1fr);
+  }
+
+  .hero-copy .button {
+    margin-top: 54px;
+  }
+
+  /* INTRO / SELECTED WORK: reduce the empty transition space */
+  .intro {
+    min-height: 390px;
+    padding:
+      52px
+      var(--page-padding)
+      38px;
+  }
+
+  .work {
+    padding:
+      24px
+      var(--page-padding)
+      80px;
+  }
+
+  /* FEATURED REELS: all three use the same short 4:5 frame */
+  .cards.featured .video-card {
+    aspect-ratio: 4 / 5;
+    height: auto;
+  }
+
+  .cards.featured .video-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  /* COLLABORATION LOGOS: preserve 4 + 3 layout, increase visual size */
+  .logo-item img {
+    max-height: 100px;
+  }
+
+  .caro-logo img {
+    max-width: 165px;
+    max-height: 112px;
+  }
+
+  /* WHAT I CREATE: move the heading/content upward without changing the image width */
+  .create-copy {
+    padding-top: 28px;
+  }
+
+  /* CONTACT: keep image/copy exactly aligned and make the footer touch the section */
+  .contact,
+  .contact-image,
+  .contact-copy {
+    height: 620px;
+    min-height: 620px;
+  }
+
+  .contact-copy {
+    padding-top: 54px;
+    padding-bottom: 54px;
+  }
+
+  .contact-copy h2 {
+    margin-bottom: 24px;
+  }
+
+  .contact {
+    margin-bottom: 0;
+  }
+
+  .site-footer {
+    margin-top: 0;
+  }
+}
