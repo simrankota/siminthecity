@@ -1,27 +1,19 @@
 /* =========================================================
    SIM IN THE CITY
-   Global styles
+   GLOBAL
 ========================================================= */
 
 :root {
-  --cream: #f6ecd7;
-  --cream-dark: #eee1c8;
+  --cream: #f7edd9;
   --ink: #17130f;
-  --muted: #6f665c;
-  --button-dark: #80694f;
-  --button-light: #efd1a7;
+  --muted: #5d5348;
+  --line: rgba(23, 19, 15, 0.16);
 
   --serif: "Cormorant Garamond", Georgia, serif;
-  --sans: "Inter", Arial, sans-serif;
+  --sans: Inter, Arial, sans-serif;
 
-  --nav-height: 78px;
-  --content-width: 1320px;
+  --nav-height: 84px;
 }
-
-
-/* =========================================================
-   RESET / GLOBAL
-========================================================= */
 
 * {
   box-sizing: border-box;
@@ -29,7 +21,6 @@
 
 html {
   scroll-behavior: smooth;
-  background: #000;
   scroll-padding-top: var(--nav-height);
 }
 
@@ -38,27 +29,20 @@ body {
   background: var(--cream);
   color: var(--ink);
   font-family: var(--sans);
-  -webkit-font-smoothing: antialiased;
 }
 
-img,
-video {
+img {
   display: block;
   max-width: 100%;
 }
 
-button,
-a {
-  font: inherit;
-}
-
 button {
-  border: 0;
+  font: inherit;
 }
 
 
 /* =========================================================
-   HEADER / NAVIGATION
+   NAVIGATION
 ========================================================= */
 
 .site-nav {
@@ -77,30 +61,68 @@ button {
 
   padding: 0 28px;
 
-  background: transparent;
+  /*
+    Strongest behind the navigation,
+    fading smoothly into the hero.
+  */
+  background: linear-gradient(
+    to bottom,
+    rgba(247, 237, 217, 0.98) 0%,
+    rgba(247, 237, 217, 0.88) 35%,
+    rgba(247, 237, 217, 0.48) 68%,
+    rgba(247, 237, 217, 0) 100%
+  );
+
+  border-bottom: 1px solid transparent;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-/* Logo stays on the far left */
+.site-nav.scrolled {
+  position: fixed;
+
+  background: rgba(247, 237, 217, 0.96);
+
+  border-color: var(--line);
+
+  box-shadow: 0 5px 20px rgba(23, 19, 15, 0.05);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+
+/* ---------------------------------------------------------
+   Header logo
+--------------------------------------------------------- */
+
 .nav-brand {
-  grid-column: 1;
   justify-self: start;
 
   display: flex;
   align-items: center;
 
-  width: max-content;
+  color: var(--ink);
+  text-decoration: none;
 }
 
 .nav-brand img {
-  width: 82px;
-  height: 82px;
+  width: 76px;
+  height: 76px;
 
   object-fit: contain;
 }
 
-/* Desktop navigation is mathematically centered */
-.desktop-nav {
-  grid-column: 2;
+
+/* ---------------------------------------------------------
+   Desktop navigation
+--------------------------------------------------------- */
+
+.site-nav nav {
+  justify-self: center;
 
   display: flex;
   align-items: center;
@@ -108,30 +130,62 @@ button {
 
   gap: 22px;
 
-  white-space: nowrap;
-
   font-family: var(--serif);
   font-size: 25px;
+  line-height: 1;
+  white-space: nowrap;
 }
 
-.desktop-nav a {
-  color: var(--ink);
+.site-nav nav a {
+  color: inherit;
   text-decoration: none;
+
+  transition: opacity 0.2s ease;
 }
 
-.desktop-nav a:hover {
-  text-decoration: underline;
-  text-underline-offset: 5px;
+.site-nav nav a:hover {
+  opacity: 0.65;
 }
 
-.desktop-nav span {
+.site-nav nav span {
   color: var(--ink);
 }
 
-/* Mobile menu is hidden on desktop */
-.mobile-menu-button,
-.mobile-nav {
-  display: none;
+
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
+
+.section {
+  padding: 100px 7vw;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.section-heading h2,
+.intro h2,
+.contact h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+
+  font-size: clamp(48px, 5vw, 82px);
+  line-height: 0.95;
+
+  margin: 0 0 18px;
+}
+
+.section-heading p,
+.intro p,
+.contact p {
+  font-size: clamp(18px, 1.55vw, 25px);
+  line-height: 1.5;
+}
+
+.section-heading.small h2 {
+  font-size: clamp(42px, 4vw, 64px);
 }
 
 
@@ -142,54 +196,125 @@ button {
 .hero {
   width: 100%;
 
-  min-height: 100vh;
   height: 100vh;
+  min-height: 700px;
 
   display: grid;
-  grid-template-columns: 2fr 1fr;
+
+  /*
+    Left side remains dominant,
+    but image is now ~43% of viewport width.
+  */
+  grid-template-columns: 57% 43%;
 
   background: var(--cream);
 }
 
-/* Left side */
+
+/* ---------------------------------------------------------
+   Hero copy
+--------------------------------------------------------- */
+
 .hero-copy {
   min-width: 0;
 
   display: flex;
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
   text-align: center;
 
-  padding: 100px 6vw 60px;
+  padding: calc(var(--nav-height) + 20px) 5vw 5vw;
 }
 
-/*
-   The full SITC logo is already a complete PNG.
-   Do NOT target .hero-logo img.
-*/
+
+/* ---------------------------------------------------------
+   Main logo
+--------------------------------------------------------- */
+
 .hero-logo {
-  width: min(760px, 90%);
-  height: auto;
+  width: 100%;
 
-  margin: 0 0 38px;
+  display: flex;
+  justify-content: center;
 }
 
-/* Tagline */
-.hero-tagline {
-  margin: 0 0 42px;
+.hero-logo img {
+  width: min(700px, 92%);
 
+  margin: 0 auto;
+
+  object-fit: contain;
+}
+
+
+/* ---------------------------------------------------------
+   Hero tagline
+--------------------------------------------------------- */
+
+.tagline {
   font-family: var(--serif);
-  font-size: clamp(30px, 3vw, 46px);
   font-style: italic;
-  line-height: 1.05;
+
+  font-size: clamp(24px, 2.2vw, 38px);
+
+  margin: 18px 0 48px;
 }
 
-/* Hero image */
+
+/* ---------------------------------------------------------
+   Buttons
+--------------------------------------------------------- */
+
+.button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px 25px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    100deg,
+    #8d6d4d,
+    #f3d2a7
+  );
+
+  color: white;
+
+  text-decoration: none;
+
+  font-weight: 600;
+
+  box-shadow:
+    0 8px 20px rgba(23, 19, 15, 0.08);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 26px rgba(23, 19, 15, 0.12);
+}
+
+
+/* ---------------------------------------------------------
+   Hero image
+--------------------------------------------------------- */
+
 .hero-image {
   width: 100%;
   height: 100vh;
+
+  min-height: 0;
 
   overflow: hidden;
 }
@@ -199,98 +324,15 @@ button {
   height: 100%;
 
   object-fit: cover;
-  object-position: center;
+
+  /*
+    Center crop.
+    This allows the image to become wider
+    without reducing its height.
+  */
+  object-position: center center;
 
   transition: transform 1.2s ease;
-}
-
-.hero:hover .hero-image img {
-  transform: scale(1.015);
-}
-
-
-/* =========================================================
-   BUTTON
-========================================================= */
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 52px;
-  padding: 0 25px;
-
-  border-radius: 999px;
-
-  background: linear-gradient(
-    105deg,
-    var(--button-dark),
-    var(--button-light)
-  );
-
-  color: #fff;
-
-  font-size: 16px;
-  font-weight: 600;
-
-  text-decoration: none;
-
-  box-shadow: 0 8px 22px rgba(65, 48, 31, 0.12);
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(65, 48, 31, 0.18);
-}
-
-
-/* =========================================================
-   GENERAL SECTIONS
-========================================================= */
-
-.section {
-  padding: 115px max(38px, 6vw);
-}
-
-.section-heading {
-  text-align: center;
-  margin-bottom: 58px;
-}
-
-.section-heading h2 {
-  margin: 0 0 12px;
-
-  font-family: var(--serif);
-  font-weight: 600;
-
-  font-size: clamp(56px, 5.5vw, 82px);
-  line-height: 0.95;
-
-  letter-spacing: -0.035em;
-}
-
-.section-heading p {
-  margin: 0;
-
-  font-size: 21px;
-  line-height: 1.5;
-}
-
-.section-heading.small {
-  margin-bottom: 42px;
-}
-
-.section-heading.small h2 {
-  font-size: clamp(45px, 4vw, 62px);
-}
-
-.section-heading.left {
-  text-align: left;
 }
 
 
@@ -299,125 +341,68 @@ button {
 ========================================================= */
 
 .intro {
+  max-width: 1100px;
+
+  margin: auto;
+
   text-align: center;
-
-  padding-top: 125px;
-  padding-bottom: 125px;
-}
-
-.intro h2 {
-  margin: 0 0 42px;
-
-  font-family: var(--serif);
-  font-weight: 600;
-
-  font-size: clamp(54px, 6vw, 88px);
-  line-height: 0.92;
-
-  letter-spacing: -0.035em;
 }
 
 .intro-copy {
-  width: min(780px, 100%);
-  margin: 0 auto;
-}
+  max-width: 820px;
 
-.intro-copy p {
-  margin: 0 0 28px;
-
-  font-size: 21px;
-  line-height: 1.55;
-}
-
-.intro-copy p:last-child {
-  margin-bottom: 0;
+  margin: auto;
 }
 
 
 /* =========================================================
-   WORK
+   WORK / CARDS
 ========================================================= */
 
-.work {
-  padding-top: 105px;
-  padding-bottom: 125px;
-}
-
 .cards {
-  width: min(1080px, 100%);
-  margin: 0 auto;
-
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
 
-  gap: 48px;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 44px;
 }
 
-.cards.two-cards {
-  width: min(980px, 100%);
-
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  gap: 80px;
-}
-
-.category {
-  margin-top: 125px;
+.featured {
+  margin-bottom: 120px;
 }
 
 .work-card {
-  min-width: 0;
   text-align: center;
 }
 
-
-/* Video card */
 .video-card {
   position: relative;
 
-  display: block;
-
   width: 100%;
-
-  aspect-ratio: 9 / 16;
-
-  max-height: 560px;
 
   padding: 0;
 
-  overflow: hidden;
+  border: 0;
 
-  background: #d8cbb4;
+  background: none;
 
   cursor: pointer;
+
+  overflow: hidden;
 }
 
-.video-card video {
+.video-card img {
   width: 100%;
-  height: 100%;
+
+  aspect-ratio: 1 / 1;
 
   object-fit: cover;
 
-  transition:
-    transform 0.65s cubic-bezier(0.2, 0.65, 0.25, 1);
+  transition: transform 0.5s ease;
 }
 
-.video-card:hover video {
-  transform: scale(1.035);
-}
-
-.video-overlay {
-  position: absolute;
-  inset: 0;
-
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.03),
-      rgba(0, 0, 0, 0.08)
-    );
-
-  pointer-events: none;
+.video-card:hover img {
+  transform: scale(1.025);
 }
 
 .play {
@@ -428,192 +413,118 @@ button {
 
   transform: translate(-50%, -50%);
 
-  width: 66px;
-  height: 66px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 70px;
+  height: 70px;
 
   border-radius: 50%;
 
-  background: rgba(38, 32, 25, 0.66);
+  display: grid;
+  place-items: center;
+
+  background: rgba(23, 19, 15, 0.58);
 
   color: #fff;
 
-  font-size: 23px;
+  font-size: 22px;
 
   padding-left: 4px;
-
-  backdrop-filter: blur(5px);
-
-  transition:
-    transform 0.25s ease,
-    background 0.25s ease;
-}
-
-.video-card:hover .play {
-  transform: translate(-50%, -50%) scale(1.08);
-
-  background: rgba(38, 32, 25, 0.82);
 }
 
 .work-card h3 {
-  margin: 25px 0 5px;
-
   font-family: var(--serif);
-  font-weight: 600;
 
-  font-size: 28px;
-  line-height: 1.05;
+  font-size: 30px;
+
+  font-weight: 500;
+
+  margin: 22px 0 4px;
 }
 
 .work-card em {
-  display: block;
-
-  color: var(--ink);
-
   font-family: var(--serif);
+
   font-size: 18px;
-  line-height: 1.25;
+}
+
+.category {
+  margin-top: 110px;
 }
 
 
 /* =========================================================
-   COLLABORATIONS
+   COLLABORATION LOGOS
 ========================================================= */
 
-.collaborations {
-  padding-top: 150px;
-  padding-bottom: 145px;
-}
-
 .logos {
-  width: min(1050px, 100%);
-  margin: 0 auto;
-
   display: grid;
+
   grid-template-columns: repeat(4, 1fr);
+
+  gap: 55px 70px;
 
   align-items: center;
   justify-items: center;
 
-  gap: 42px 55px;
+  max-width: 1100px;
+
+  margin: auto;
 }
 
-.logo-item {
-  width: 100%;
-  height: 72px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo-item img {
-  width: auto;
-  max-width: 155px;
-  max-height: 55px;
+.logos img {
+  max-width: 180px;
+  max-height: 90px;
 
   object-fit: contain;
 }
 
-.caro-logo {
-  flex-direction: column;
-
-  font-family: var(--serif);
-  font-size: 30px;
-  line-height: 0.72;
-}
-
-.caro-logo small {
-  font-size: 23px;
-  margin: 8px 0;
-}
-
 
 /* =========================================================
-   WHAT I CREATE / CONTACT
+   CREATE / CONTACT SPLIT SECTIONS
 ========================================================= */
 
 .section-split {
-  width: 100%;
-
   display: grid;
-  grid-template-columns: 1fr 1fr;
 
-  padding: 0;
+  grid-template-columns: 1.05fr 0.95fr;
+
+  align-items: center;
+
+  gap: 80px;
 }
 
-.create-copy,
-.contact-copy {
-  padding: 120px 7vw;
-}
-
-.create-image,
-.contact-image {
-  min-height: 600px;
-  max-height: 680px;
-
-  overflow: hidden;
-}
-
-.create-image img,
-.contact-image img {
+.section-split > img {
   width: 100%;
-  height: 100%;
+  height: 650px;
 
   object-fit: cover;
-  object-position: center;
-
-  transition: transform 1s ease;
 }
 
-.create:hover .create-image img,
-.contact:hover .contact-image img {
-  transform: scale(1.015);
-}
+.left {
+  text-align: left;
 
-
-/* What I Create */
-.create .section-heading {
-  margin-bottom: 60px;
-}
-
-.create .section-heading h2 {
-  font-size: clamp(55px, 5vw, 78px);
-}
-
-.create .section-heading p {
-  font-size: 21px;
-  line-height: 1.45;
+  margin-bottom: 40px;
 }
 
 .offer {
-  max-width: 650px;
-}
-
-.offer-item {
-  margin-bottom: 45px;
-}
-
-.offer-item:last-child {
-  margin-bottom: 0;
+  max-width: 700px;
 }
 
 .offer h3 {
-  margin: 0 0 8px;
-
   font-family: var(--serif);
-  font-size: 31px;
+
+  font-size: 30px;
+
+  margin: 30px 0 4px;
 }
 
 .offer p {
-  margin: 0;
-
   font-family: var(--serif);
-  font-size: 21px;
-  line-height: 1.45;
+
+  font-size: 23px;
+
+  line-height: 1.35;
+
+  margin: 0;
 }
 
 
@@ -621,96 +532,38 @@ button {
    CONTACT
 ========================================================= */
 
-.contact-copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  padding-left: 8vw;
-  padding-right: 8vw;
-}
-
 .contact-copy h2 {
-  margin: 0 0 28px;
-
-  font-family: var(--serif);
-  font-weight: 600;
-
-  font-size: clamp(54px, 5vw, 76px);
-  line-height: 0.92;
-
-  letter-spacing: -0.03em;
-}
-
-.contact-copy > p {
-  max-width: 620px;
-
-  margin: 0 0 42px;
-
-  font-size: 20px;
-  line-height: 1.5;
+  font-size: clamp(45px, 4.2vw, 70px);
 }
 
 .contact-links {
-  display: flex;
-  flex-direction: column;
+  display: grid;
 
-  gap: 25px;
+  gap: 22px;
 
-  margin-bottom: 42px;
+  margin: 38px 0;
 }
 
 .contact-links a {
-  display: flex;
-  flex-direction: column;
+  display: grid;
 
-  gap: 5px;
+  gap: 3px;
 
-  color: var(--ink);
+  color: inherit;
+
   text-decoration: none;
 }
 
 .contact-links small {
-  font-size: 11px;
-  font-weight: 600;
+  text-transform: uppercase;
 
   letter-spacing: 0.18em;
-
-  text-transform: uppercase;
 }
 
 .contact-links span {
   font-family: var(--serif);
-  font-size: 24px;
-}
 
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.site-footer {
-  padding: 75px 30px 90px;
-
-  text-align: center;
-
-  background: var(--cream-dark);
-}
-
-.site-footer img {
-  width: 170px;
-
-  margin: 0 auto 18px;
-}
-
-.site-footer p {
-  margin: 0;
-
-  font-size: 11px;
-
-  letter-spacing: 0.2em;
-
-  text-transform: uppercase;
+  font-size: 25px;
 }
 
 
@@ -719,83 +572,57 @@ button {
 ========================================================= */
 
 .video-modal {
-  width: min(500px, 90vw);
-  max-width: 500px;
+  border: 0;
 
   padding: 0;
 
-  border: 0;
-  border-radius: 5px;
+  background: #000;
 
-  background: #111;
+  width: min(900px, 92vw);
 
-  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.45);
+  max-width: none;
 }
 
 .video-modal::backdrop {
-  background: rgba(0, 0, 0, 0.82);
-  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.78);
 }
 
 .video-modal video {
   width: 100%;
+
   max-height: 88vh;
 
-  object-fit: contain;
-
-  background: #000;
+  display: block;
 }
 
 .modal-close {
   position: absolute;
 
-  top: 12px;
-  right: 12px;
+  right: 10px;
+  top: 5px;
 
   z-index: 2;
 
-  width: 42px;
-  height: 42px;
+  border: 0;
 
-  border-radius: 50%;
-
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.55);
 
   color: #fff;
 
-  font-size: 27px;
+  border-radius: 50%;
+
+  width: 40px;
+  height: 40px;
+
+  font-size: 28px;
 
   cursor: pointer;
 }
 
 
 /* =========================================================
-   SCROLL REVEAL
-========================================================= */
-
-.section-heading,
-.work-card,
-.logo-item,
-.offer-item,
-.create-image,
-.contact-image {
-  opacity: 0;
-
-  transform: translateY(22px);
-
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s ease;
-}
-
-.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-/* =========================================================
-   TABLET — 1000px
+   TABLET
+   1000px
 ========================================================= */
 
 @media (max-width: 1000px) {
@@ -804,10 +631,16 @@ button {
     --nav-height: 70px;
   }
 
-  /* Keep nav overlaying the hero */
+  /* -------------------------------------------------------
+     Navigation
+  ------------------------------------------------------- */
+
   .site-nav {
     height: var(--nav-height);
+
     padding: 0 24px;
+
+    grid-template-columns: auto 1fr auto;
   }
 
   .nav-brand img {
@@ -815,68 +648,96 @@ button {
     height: 68px;
   }
 
-  .desktop-nav {
-    gap: 18px;
-  }
+  .site-nav nav {
+    justify-self: center;
 
-  .desktop-nav a {
+    gap: 18px;
+
     font-size: 19px;
   }
 
-  /* Hero stacks */
+
+  /* -------------------------------------------------------
+     Hero
+  ------------------------------------------------------- */
+
   .hero {
+    grid-template-columns: 1fr;
+
     height: auto;
     min-height: 0;
-
-    grid-template-columns: 1fr;
   }
 
   .hero-copy {
     min-height: 620px;
 
-    padding: 100px 35px 70px;
+    padding:
+      calc(var(--nav-height) + 50px)
+      35px
+      70px;
+  }
+
+  .hero-logo img {
+    width: min(700px, 90%);
   }
 
   .hero-image {
-    width: 100%;
     height: 650px;
 
     min-height: 650px;
   }
 
+
+  /* -------------------------------------------------------
+     Cards
+  ------------------------------------------------------- */
+
   .cards {
     gap: 30px;
   }
+
+
+  /* -------------------------------------------------------
+     Logos
+  ------------------------------------------------------- */
 
   .logos {
     gap: 45px;
   }
 
+
+  /* -------------------------------------------------------
+     Split sections
+  ------------------------------------------------------- */
+
   .section-split {
     grid-template-columns: 1fr;
+
+    gap: 0;
   }
 
-  .create-image,
-  .contact-image {
-    min-height: 650px;
-    max-height: none;
+  .section-split > img {
+    height: 650px;
 
     order: -1;
   }
 
   .create-copy,
   .contact-copy {
-    padding: 90px 6.5vw;
+    padding:
+      90px
+      6.5vw;
   }
 
-  .contact-image {
+  .contact .section-split > img {
     order: 0;
   }
 }
 
 
 /* =========================================================
-   MOBILE — 720px
+   MOBILE
+   720px
 ========================================================= */
 
 @media (max-width: 720px) {
@@ -885,20 +746,28 @@ button {
     --nav-height: 64px;
   }
 
-  /* Header */
+
+  /* -------------------------------------------------------
+     Navigation
+  ------------------------------------------------------- */
+
   .site-nav {
+    position: absolute;
+
     height: var(--nav-height);
 
+    padding: 0 20px;
+
     display: flex;
-    align-items: center;
+
     justify-content: space-between;
 
-    padding: 0 20px;
-  }
-
-  .nav-brand {
-    display: flex;
-    align-items: center;
+    background: linear-gradient(
+      to bottom,
+      rgba(247, 237, 217, 0.98) 0%,
+      rgba(247, 237, 217, 0.88) 45%,
+      rgba(247, 237, 217, 0) 100%
+    );
   }
 
   .nav-brand img {
@@ -906,15 +775,20 @@ button {
     height: 58px;
   }
 
-  .desktop-nav {
+  .site-nav nav {
     display: none;
   }
 
-  /* Hamburger */
+
+  /* -------------------------------------------------------
+     Mobile navigation trigger
+  ------------------------------------------------------- */
+
   .mobile-menu-button {
     display: flex;
 
     flex-direction: column;
+
     justify-content: center;
 
     gap: 5px;
@@ -926,6 +800,8 @@ button {
 
     background: transparent;
 
+    border: 0;
+
     cursor: pointer;
   }
 
@@ -933,20 +809,30 @@ button {
     display: block;
 
     width: 100%;
+
     height: 1.5px;
 
     background: var(--ink);
 
-    transition: transform 0.25s ease;
+    transition:
+      transform 0.25s ease,
+      opacity 0.25s ease;
   }
 
-  /* Mobile dropdown */
+
+  /* -------------------------------------------------------
+     Mobile dropdown
+  ------------------------------------------------------- */
+
   .mobile-nav {
     position: absolute;
 
     top: var(--nav-height);
+
     left: 0;
     right: 0;
+
+    z-index: 200;
 
     display: flex;
 
@@ -956,7 +842,7 @@ button {
 
     background: var(--cream);
 
-    border-bottom: 1px solid rgba(23, 19, 15, 0.12);
+    border-bottom: 1px solid var(--line);
 
     opacity: 0;
 
@@ -985,73 +871,68 @@ button {
     text-decoration: none;
 
     font-family: var(--serif);
+
     font-size: 25px;
   }
 
 
-  /* General */
+  /* -------------------------------------------------------
+     General sections
+  ------------------------------------------------------- */
+
   .section {
     padding-left: 22px;
     padding-right: 22px;
   }
 
 
-  /* Mobile hero */
+  /* -------------------------------------------------------
+     Hero
+  ------------------------------------------------------- */
+
   .hero {
     display: grid;
 
     grid-template-columns: 1fr;
 
     height: auto;
-    min-height: 0;
-  }
-
-  /*
-     Photo first on mobile.
-     It gets a deliberate crop rather than
-     shrinking the source image.
-  */
-  .hero-image {
-    order: -1;
-
-    width: 100%;
-
-    height: 560px;
-    min-height: 560px;
-
-    overflow: hidden;
-  }
-
-  .hero-image img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    object-position: center;
   }
 
   .hero-copy {
     min-height: 550px;
 
-    padding: 75px 22px 65px;
+    padding:
+      calc(var(--nav-height) + 40px)
+      22px
+      55px;
   }
 
-  .hero-logo {
+  .hero-logo img {
     width: 90%;
 
     margin-bottom: 30px;
   }
 
-  .hero-tagline {
+  .tagline {
     font-size: 31px;
 
     margin-bottom: 30px;
   }
 
+  .hero-image {
+    height: 560px;
 
-  /* Intro */
+    min-height: 560px;
+  }
+
+
+  /* -------------------------------------------------------
+     Intro
+  ------------------------------------------------------- */
+
   .intro {
     padding-top: 90px;
+
     padding-bottom: 90px;
   }
 
@@ -1064,7 +945,10 @@ button {
   }
 
 
-  /* Section headings */
+  /* -------------------------------------------------------
+     Section headings
+  ------------------------------------------------------- */
+
   .section-heading {
     margin-bottom: 42px;
   }
@@ -1078,9 +962,12 @@ button {
   }
 
 
-  /* Work */
+  /* -------------------------------------------------------
+     Cards
+  ------------------------------------------------------- */
+
   .cards,
-  .cards.two-cards {
+  .cards.featured {
     grid-template-columns: 1fr;
 
     width: 100%;
@@ -1105,32 +992,36 @@ button {
   }
 
 
-  /* Collaboration logos */
+  /* -------------------------------------------------------
+     Collaboration logos
+  ------------------------------------------------------- */
+
   .logos {
     grid-template-columns: repeat(2, 1fr);
 
     gap: 30px 20px;
   }
 
-  .logo-item {
-    height: 80px;
-  }
-
-  .logo-item img {
+  .logos img {
     max-width: 90%;
+
     max-height: 65px;
   }
 
 
-  /* Create / contact */
-  .create-image,
-  .contact-image {
-    min-height: 520px;
+  /* -------------------------------------------------------
+     Create / contact
+  ------------------------------------------------------- */
+
+  .section-split > img {
+    height: 520px;
   }
 
   .create-copy,
   .contact-copy {
-    padding: 80px 28px;
+    padding:
+      80px
+      28px;
   }
 
   .create .section-heading h2,
@@ -1149,9 +1040,54 @@ button {
   .contact-links span {
     font-size: 22px;
   }
+}
 
-  .site-footer {
-    padding-bottom: 70px;
+
+/* =========================================================
+   SMALL MOBILE
+   560px
+========================================================= */
+
+@media (max-width: 560px) {
+
+  .site-nav {
+    padding: 0 16px;
+  }
+
+  .nav-brand img {
+    width: 54px;
+    height: 54px;
+  }
+
+  .hero-copy {
+    min-height: 520px;
+  }
+
+  .hero-logo img {
+    width: 100%;
+  }
+
+  .hero-image {
+    height: 500px;
+
+    min-height: 500px;
+  }
+
+  .section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .section-heading h2 {
+    font-size: 45px;
+  }
+
+  .intro h2 {
+    font-size: 42px;
+  }
+
+  .section-split > img {
+    height: 460px;
   }
 }
 
