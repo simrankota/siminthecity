@@ -5,6 +5,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+
   /* =======================================================
      VIDEO LIGHTBOX
   ======================================================= */
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeButton = document.querySelector(".modal-close");
 
   const videoCards = document.querySelectorAll(".video-card");
+
 
   videoCards.forEach((card) => {
 
@@ -45,7 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function closeVideoModal() {
 
     modalVideo.pause();
+
     modalVideo.removeAttribute("src");
+
     modalVideo.load();
 
     modal.close();
@@ -89,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuButton = document.querySelector(".mobile-menu-button");
   const mobileNav = document.querySelector(".mobile-nav");
   const mobileLinks = document.querySelectorAll(".mobile-nav a");
+
 
   if (menuButton && mobileNav) {
 
@@ -202,3 +207,5 @@ document.addEventListener("DOMContentLoaded", () => {
   sections.forEach((section) => {
     sectionObserver.observe(section);
   });
+
+});
