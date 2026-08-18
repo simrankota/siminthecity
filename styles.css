@@ -1,14 +1,16 @@
 /* =========================================================
    SIM IN THE CITY
-   STABLE REFERENCE STYLES
-   ========================================================= */
+   STABLE REFERENCE
+========================================================= */
 
 :root {
   --cream: #f6ead2;
   --cream-dark: #ead9b8;
   --ink: #17130f;
-  --header-dark: #3f3025;
-  --header-dark-2: #584433;
+
+  --header-dark: #2d2119;
+  --header-mid: #4a3528;
+  --header-light: #624936;
 
   --serif: "Cormorant Garamond", Georgia, serif;
   --sans: Inter, Arial, sans-serif;
@@ -29,9 +31,12 @@ html {
 body {
   margin: 0;
   padding: 0;
+
   background: #000;
   color: var(--ink);
+
   overflow-x: hidden;
+
   font-family: var(--sans);
   -webkit-font-smoothing: antialiased;
 }
@@ -56,9 +61,10 @@ main {
   overflow: hidden;
 }
 
+
 /* =========================================================
    NAVIGATION
-   ========================================================= */
+========================================================= */
 
 .site-nav {
   position: absolute;
@@ -75,23 +81,19 @@ main {
 
   padding: 0 clamp(28px, 4.5vw, 68px);
 
-  /*
-    Important:
-    The header is now completely opaque so the hero photo
-    cannot visually continue behind the navigation.
-  */
   background: linear-gradient(
-    100deg,
-    var(--header-dark),
-    var(--header-dark-2)
+    90deg,
+    var(--header-dark) 0%,
+    var(--header-mid) 52%,
+    var(--header-light) 100%
   );
 
   color: #f8eedc;
 }
 
 .nav-brand {
-  width: 46px;
-  height: 46px;
+  width: 58px;
+  height: 58px;
 
   display: flex;
   align-items: center;
@@ -101,8 +103,9 @@ main {
 }
 
 .nav-brand img {
-  width: 42px;
-  height: 42px;
+  width: 54px;
+  height: 54px;
+
   object-fit: contain;
 
   filter: invert(1);
@@ -115,7 +118,7 @@ main {
   align-items: center;
   justify-content: center;
 
-  gap: clamp(16px, 2vw, 28px);
+  gap: clamp(18px, 2vw, 30px);
 }
 
 .desktop-nav a,
@@ -134,7 +137,7 @@ main {
 }
 
 .desktop-nav a:hover {
-  opacity: 0.65;
+  opacity: 0.7;
 }
 
 .mobile-menu-button,
@@ -142,19 +145,32 @@ main {
   display: none;
 }
 
+
 /* =========================================================
    HERO
-   ========================================================= */
+========================================================= */
 
 .hero {
   position: relative;
 
   width: 100%;
-  height: 820px;
-  min-height: 820px;
+
+  /*
+    Keeps the hero close to viewport height without
+    allowing the image to become vertically oversized.
+  */
+  height: calc(100vh - 20px);
+  min-height: 760px;
+  max-height: 820px;
 
   display: grid;
-  grid-template-columns: minmax(0, 1.65fr) minmax(360px, 1fr);
+
+  /*
+    Image is slightly wider than before.
+  */
+  grid-template-columns:
+    minmax(0, 1.55fr)
+    minmax(400px, 1fr);
 
   background: var(--cream);
 
@@ -163,15 +179,16 @@ main {
 
 .hero-copy {
   min-width: 0;
-  height: 820px;
+  height: 100%;
 
   padding:
-    calc(var(--nav-height) + 20px)
+    calc(var(--nav-height) + 15px)
     clamp(32px, 5vw, 78px)
-    55px;
+    60px;
 
   display: flex;
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
@@ -180,30 +197,38 @@ main {
 
 .hero-logo {
   width: min(80%, 720px);
+
   height: auto;
 
-  margin: 0 auto 25px;
+  margin: 0 auto 22px;
 }
 
 .hero-tagline {
-  margin: 0 0 30px;
+  margin: 0;
 
   font-family: var(--serif);
   font-style: italic;
 
-  /*
-    Deliberately smaller than the previous version.
-  */
-  font-size: clamp(26px, 2.4vw, 38px);
+  font-size: clamp(26px, 2.25vw, 36px);
   line-height: 1.05;
+}
+
+/*
+  Deliberately push the CTA lower without changing
+  the overall hero structure.
+*/
+.hero-copy .button {
+  margin-top: 38px;
 }
 
 .button {
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
 
   min-height: 50px;
+
   padding: 0 27px;
 
   border-radius: 999px;
@@ -220,7 +245,8 @@ main {
   font-size: 15px;
   font-weight: 600;
 
-  box-shadow: 0 12px 28px rgba(84, 61, 38, 0.16);
+  box-shadow:
+    0 12px 28px rgba(84, 61, 38, 0.16);
 
   transition:
     transform 0.2s ease,
@@ -229,12 +255,16 @@ main {
 
 .button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 32px rgba(84, 61, 38, 0.22);
+
+  box-shadow:
+    0 16px 32px rgba(84, 61, 38, 0.22);
 }
 
 .hero-image {
   min-width: 0;
-  height: 820px;
+
+  width: 100%;
+  height: 100%;
 
   overflow: hidden;
 }
@@ -247,22 +277,29 @@ main {
   object-position: center center;
 }
 
+
 /* =========================================================
    INTRO
-   ========================================================= */
+========================================================= */
 
 .intro {
   width: 100%;
 
-  min-height: 500px;
+  /*
+    Reduced from the previous version.
+    This is the primary fix for the excessive gap before
+    Selected Work.
+  */
+  min-height: 440px;
 
   padding:
-    88px
+    72px
     var(--page-padding)
-    72px;
+    58px;
 
   display: flex;
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
@@ -274,11 +311,13 @@ main {
 .intro h2 {
   max-width: 920px;
 
-  margin: 0 0 34px;
+  margin: 0 0 30px;
 
   font-family: var(--serif);
+
   font-size: clamp(48px, 5.1vw, 76px);
   line-height: 0.94;
+
   font-weight: 600;
 
   letter-spacing: -0.025em;
@@ -289,7 +328,7 @@ main {
 }
 
 .intro-copy p {
-  margin: 0 0 27px;
+  margin: 0 0 25px;
 
   font-size: clamp(17px, 1.3vw, 21px);
   line-height: 1.5;
@@ -299,12 +338,13 @@ main {
   margin-bottom: 0;
 }
 
+
 /* =========================================================
    SHARED SECTION HEADINGS
-   ========================================================= */
+========================================================= */
 
 .section-heading {
-  margin: 0 auto 55px;
+  margin: 0 auto 50px;
 
   text-align: center;
 }
@@ -313,8 +353,10 @@ main {
   margin: 0 0 14px;
 
   font-family: var(--serif);
+
   font-size: clamp(50px, 5.1vw, 76px);
   line-height: 0.94;
+
   font-weight: 600;
 
   letter-spacing: -0.025em;
@@ -327,27 +369,39 @@ main {
   line-height: 1.45;
 }
 
+
 /* =========================================================
    SELECTED WORK
-   ========================================================= */
+========================================================= */
 
 .work {
   width: 100%;
 
+  /*
+    Reduced top padding so Selected Work follows Intro
+    much sooner.
+  */
   padding:
-    82px
+    52px
     var(--page-padding)
-    90px;
+    80px;
 
   background: var(--cream);
 }
 
+.work .section-heading {
+  margin-bottom: 48px;
+}
+
 .cards {
   width: min(1050px, 100%);
+
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
 
   gap: clamp(28px, 3.2vw, 48px);
 
@@ -356,20 +410,40 @@ main {
 
 .work-card {
   min-width: 0;
+
   text-align: center;
 }
 
+
+/* =========================================================
+   REEL CARDS
+========================================================= */
+
 /*
-  ALL THREE reels use the exact same container.
-  The source video's native dimensions are irrelevant.
+  IMPORTANT:
+
+  These are intentionally NOT 9:16.
+
+  The previous version made them full-height rectangles.
+  We want a shorter vertical crop.
+
+  Every reel gets the exact same fixed ratio.
 */
+
 .video-card {
   position: relative;
 
   width: 100%;
-  aspect-ratio: 9 / 16;
+
+  /*
+    Shorter than 9:16.
+    This gives the compact vertical look from the
+    reference screenshots.
+  */
+  aspect-ratio: 0.78 / 1;
 
   height: auto;
+
   min-height: 0;
 
   margin: 0;
@@ -396,7 +470,7 @@ main {
   height: 100%;
 
   /*
-    This is what makes all three reels crop identically.
+    SAME crop behavior on all three.
   */
   object-fit: cover;
   object-position: center center;
@@ -409,6 +483,7 @@ main {
 
 .video-overlay {
   position: absolute;
+
   inset: 0;
 
   background: rgba(0, 0, 0, 0.04);
@@ -448,72 +523,82 @@ main {
   margin: 18px 0 3px;
 
   font-family: var(--serif);
+
   font-size: clamp(25px, 2vw, 31px);
   line-height: 1.08;
+
   font-weight: 500;
 }
 
 .work-card em {
   font-family: var(--serif);
+
   font-size: clamp(16px, 1.25vw, 19px);
+
   line-height: 1.2;
 }
 
 .category {
-  margin-top: 90px;
+  margin-top: 72px;
 }
+
 
 /* =========================================================
    SECONDARY WORK ROW
-   ========================================================= */
+========================================================= */
 
 .cards.two-cards {
   width: min(950px, 100%);
 
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
 
   gap: clamp(30px, 4vw, 70px);
 }
 
-/* Keep non-video work imagery consistent */
 .cards.two-cards .work-card img {
   width: 100%;
+
   aspect-ratio: 4 / 3;
 
   object-fit: cover;
 }
 
+
 /* =========================================================
-   SELECTED COLLABORATIONS
-   ========================================================= */
+   COLLABORATIONS
+========================================================= */
 
 .collaborations {
   width: 100%;
 
   padding:
-    80px
+    72px
     var(--page-padding)
-    85px;
+    80px;
 
   background: var(--cream);
 }
 
 .collaborations .section-heading {
-  margin-bottom: 42px;
+  margin-bottom: 38px;
 }
 
 .logos {
   width: min(1080px, 100%);
+
   margin: 0 auto;
 
   display: grid;
 
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
 
-  grid-template-rows: auto auto;
+  grid-template-rows:
+    auto auto;
 
   column-gap: 34px;
-  row-gap: 25px;
+  row-gap: 22px;
 
   align-items: center;
   justify-items: center;
@@ -524,13 +609,11 @@ main {
   height: 115px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 }
 
-/*
-  First row = 4 logos
-*/
 .logo-item:nth-child(1) {
   grid-column: 1;
   grid-row: 1;
@@ -551,25 +634,22 @@ main {
   grid-row: 1;
 }
 
-/*
-  Second row = 3 logos centered
-*/
 .logo-item:nth-child(5) {
-  grid-column: 1 / span 1;
+  grid-column: 1;
   grid-row: 2;
 
   transform: translateX(50%);
 }
 
 .logo-item:nth-child(6) {
-  grid-column: 2 / span 1;
+  grid-column: 2;
   grid-row: 2;
 
   transform: translateX(50%);
 }
 
 .logo-item:nth-child(7) {
-  grid-column: 3 / span 1;
+  grid-column: 3;
   grid-row: 2;
 
   transform: translateX(50%);
@@ -577,35 +657,40 @@ main {
 
 .logo-item img {
   width: auto;
+
+  /*
+    Larger than the previous version.
+  */
   max-width: 100%;
-  max-height: 86px;
+
+  max-height: 90px;
 
   object-fit: contain;
 }
 
 .caro-logo img {
   width: auto;
-  max-width: 145px;
-  max-height: 100px;
+
+  max-width: 150px;
+  max-height: 105px;
 }
+
 
 /* =========================================================
    WHAT I CREATE
-   ========================================================= */
-
-/*
-  Important:
-  Create is its OWN grid.
-  Contact is NOT inside this grid.
-*/
+========================================================= */
 
 .create {
   width: 100%;
+
   height: 620px;
   min-height: 620px;
 
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
 
   gap: 0;
 
@@ -616,21 +701,27 @@ main {
 
 .create-copy {
   min-width: 0;
+
   height: 620px;
 
+  /*
+    Move the entire content upward slightly.
+  */
   padding:
-    65px
+    48px
     clamp(38px, 6vw, 90px);
 
   display: flex;
+
   flex-direction: column;
-  justify-content: center;
+
+  justify-content: flex-start;
 
   background: var(--cream);
 }
 
 .create-copy .section-heading {
-  margin: 0 0 42px;
+  margin: 0 0 34px;
 
   text-align: left;
 }
@@ -645,15 +736,19 @@ main {
 
 .offer {
   display: grid;
-  gap: 28px;
+
+  gap: 27px;
 }
 
 .offer-item h3 {
   margin: 0 0 7px;
 
   font-family: var(--serif);
+
   font-size: clamp(25px, 2vw, 31px);
+
   line-height: 1.05;
+
   font-weight: 500;
 }
 
@@ -663,12 +758,15 @@ main {
   margin: 0;
 
   font-family: var(--serif);
+
   font-size: clamp(17px, 1.3vw, 20px);
+
   line-height: 1.4;
 }
 
 .create-image {
   min-width: 0;
+
   height: 620px;
 
   overflow: hidden;
@@ -682,17 +780,22 @@ main {
   object-position: center center;
 }
 
+
 /* =========================================================
    CONTACT
-   ========================================================= */
+========================================================= */
 
 .contact {
   width: 100%;
+
   height: 620px;
   min-height: 620px;
 
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
 
   gap: 0;
 
@@ -703,6 +806,7 @@ main {
 
 .contact-image {
   min-width: 0;
+
   height: 620px;
 
   overflow: hidden;
@@ -718,6 +822,7 @@ main {
 
 .contact-copy {
   min-width: 0;
+
   height: 620px;
 
   padding:
@@ -725,7 +830,9 @@ main {
     clamp(38px, 6vw, 90px);
 
   display: flex;
+
   flex-direction: column;
+
   justify-content: center;
 
   background: var(--cream);
@@ -737,8 +844,11 @@ main {
   margin: 0 0 30px;
 
   font-family: var(--serif);
+
   font-size: clamp(48px, 4.7vw, 70px);
+
   line-height: 0.94;
+
   font-weight: 600;
 
   letter-spacing: -0.025em;
@@ -750,11 +860,13 @@ main {
   margin: 0 0 30px;
 
   font-size: clamp(17px, 1.3vw, 20px);
+
   line-height: 1.45;
 }
 
 .contact-links {
   display: grid;
+
   gap: 18px;
 
   margin-bottom: 30px;
@@ -762,21 +874,27 @@ main {
 
 .contact-links a {
   display: flex;
+
   flex-direction: column;
+
   gap: 4px;
 }
 
 .contact-links small {
   font-family: var(--sans);
+
   font-size: 10px;
+
   font-weight: 700;
 
   letter-spacing: 0.18em;
+
   text-transform: uppercase;
 }
 
 .contact-links span {
   font-family: var(--serif);
+
   font-size: clamp(19px, 1.5vw, 24px);
 }
 
@@ -784,9 +902,10 @@ main {
   align-self: flex-start;
 }
 
+
 /* =========================================================
    FOOTER
-   ========================================================= */
+========================================================= */
 
 .site-footer {
   width: 100%;
@@ -798,7 +917,9 @@ main {
   padding: 45px 30px;
 
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
@@ -809,6 +930,7 @@ main {
 
 .site-footer img {
   width: min(190px, 42vw);
+
   height: auto;
 
   margin-bottom: 16px;
@@ -818,18 +940,22 @@ main {
   margin: 0;
 
   font-size: 11px;
+
   letter-spacing: 0.18em;
 }
 
+
 /* =========================================================
    VIDEO MODAL
-   ========================================================= */
+========================================================= */
 
 .video-modal {
   width: min(92vw, 620px);
+
   max-width: 620px;
 
   padding: 0;
+
   border: 0;
 
   background: #111;
@@ -841,6 +967,7 @@ main {
 
 .video-modal video {
   width: 100%;
+
   max-height: 90vh;
 }
 
@@ -863,15 +990,21 @@ main {
   cursor: pointer;
 }
 
+
 /* =========================================================
    TABLET
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 1000px) {
 
   .hero {
     height: 760px;
     min-height: 760px;
+    max-height: 760px;
+
+    grid-template-columns:
+      minmax(0, 1.5fr)
+      minmax(350px, 1fr);
   }
 
   .hero-copy,
@@ -912,9 +1045,10 @@ main {
   }
 }
 
+
 /* =========================================================
    MOBILE
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 720px) {
 
@@ -924,6 +1058,16 @@ main {
 
   .site-nav {
     padding: 0 20px;
+  }
+
+  .nav-brand {
+    width: 50px;
+    height: 50px;
+  }
+
+  .nav-brand img {
+    width: 48px;
+    height: 48px;
   }
 
   .desktop-nav {
@@ -939,11 +1083,13 @@ main {
     padding: 8px;
 
     flex-direction: column;
+
     justify-content: center;
 
     gap: 5px;
 
     background: transparent;
+
     color: #f8eedc;
 
     cursor: pointer;
@@ -962,17 +1108,24 @@ main {
     position: absolute;
 
     top: var(--nav-height);
+
     left: 0;
     right: 0;
 
     display: flex;
+
     flex-direction: column;
 
     padding: 12px 20px 20px;
 
-    background: var(--header-dark);
+    background: linear-gradient(
+      90deg,
+      var(--header-dark),
+      var(--header-light)
+    );
 
     opacity: 0;
+
     pointer-events: none;
 
     transform: translateY(-8px);
@@ -984,7 +1137,9 @@ main {
 
   .mobile-nav.open {
     opacity: 1;
+
     pointer-events: auto;
+
     transform: translateY(0);
   }
 
@@ -994,21 +1149,28 @@ main {
     color: #f8eedc;
 
     font-family: var(--serif);
+
     font-size: 25px;
   }
+
 
   /* HERO */
 
   .hero {
     height: auto;
+
     min-height: 0;
 
+    max-height: none;
+
     display: flex;
+
     flex-direction: column;
   }
 
   .hero-copy {
     height: 560px;
+
     min-height: 560px;
 
     padding:
@@ -1019,6 +1181,7 @@ main {
 
   .hero-logo {
     width: 91%;
+
     margin-bottom: 25px;
   }
 
@@ -1026,10 +1189,16 @@ main {
     font-size: 28px;
   }
 
+  .hero-copy .button {
+    margin-top: 32px;
+  }
+
   .hero-image {
     height: 560px;
+
     min-height: 560px;
   }
+
 
   /* INTRO */
 
@@ -1037,22 +1206,23 @@ main {
     min-height: 0;
 
     padding:
-      75px
+      68px
       22px
-      70px;
+      62px;
   }
 
   .intro h2 {
     font-size: 46px;
   }
 
+
   /* WORK */
 
   .work {
     padding:
-      72px
+      48px
       22px
-      80px;
+      75px;
   }
 
   .cards,
@@ -1064,25 +1234,30 @@ main {
     gap: 42px;
   }
 
+  /*
+    Same shortened crop on mobile.
+  */
   .video-card {
-    aspect-ratio: 9 / 16;
+    aspect-ratio: 0.78 / 1;
   }
 
   .category {
-    margin-top: 75px;
+    margin-top: 68px;
   }
+
 
   /* COLLABORATIONS */
 
   .collaborations {
     padding:
-      72px
+      65px
       22px
-      75px;
+      70px;
   }
 
   .logos {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
 
     gap: 15px;
 
@@ -1092,9 +1267,11 @@ main {
   .logo-item,
   .logo-item:nth-child(n) {
     grid-column: auto;
+
     grid-row: auto;
 
     width: 100%;
+
     height: 78px;
 
     transform: none;
@@ -1102,16 +1279,20 @@ main {
 
   .logo-item img {
     max-width: 90%;
+
     max-height: 60px;
   }
+
 
   /* CREATE */
 
   .create {
     height: auto;
+
     min-height: 0;
 
     display: flex;
+
     flex-direction: column;
   }
 
@@ -1119,11 +1300,13 @@ main {
     order: 0;
 
     width: 100%;
+
     height: auto;
+
     min-height: 540px;
 
     padding:
-      65px
+      58px
       28px;
   }
 
@@ -1131,7 +1314,9 @@ main {
     order: 1;
 
     width: 100%;
+
     height: 500px;
+
     min-height: 500px;
   }
 
@@ -1143,13 +1328,16 @@ main {
     gap: 27px;
   }
 
+
   /* CONTACT */
 
   .contact {
     height: auto;
+
     min-height: 0;
 
     display: flex;
+
     flex-direction: column;
   }
 
@@ -1157,7 +1345,9 @@ main {
     order: 0;
 
     width: 100%;
+
     height: 500px;
+
     min-height: 500px;
   }
 
@@ -1165,7 +1355,9 @@ main {
     order: 1;
 
     width: 100%;
+
     height: auto;
+
     min-height: 540px;
 
     padding:
@@ -1181,21 +1373,26 @@ main {
     width: 100%;
   }
 
+
   /* FOOTER */
 
   .site-footer {
     height: 190px;
+
     min-height: 190px;
 
-    padding: 45px 20px;
+    padding:
+      45px 20px;
   }
 }
 
+
 /* =========================================================
    REDUCED MOTION
-   ========================================================= */
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+
   html {
     scroll-behavior: auto;
   }
