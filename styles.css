@@ -159,9 +159,9 @@ main {
     Keeps the hero close to viewport height without
     allowing the image to become vertically oversized.
   */
-  height: calc(100vh - 20px);
+  height: 100vh;
   min-height: 760px;
-  max-height: 820px;
+  max-height: none;
 
   display: grid;
 
@@ -169,8 +169,8 @@ main {
     Image is slightly wider than before.
   */
   grid-template-columns:
-    minmax(0, 1.55fr)
-    minmax(400px, 1fr);
+    minmax(0, 1.32fr)
+    minmax(450px, 1fr);
 
   background: var(--cream);
 
@@ -218,7 +218,7 @@ main {
   the overall hero structure.
 */
 .hero-copy .button {
-  margin-top: 38px;
+  margin-top: 64px;
 }
 
 .button {
@@ -290,12 +290,12 @@ main {
     This is the primary fix for the excessive gap before
     Selected Work.
   */
-  min-height: 440px;
+  min-height: 330px;
 
   padding:
-    72px
+    44px
     var(--page-padding)
-    58px;
+    30px;
 
   display: flex;
   flex-direction: column;
@@ -382,7 +382,7 @@ main {
     much sooner.
   */
   padding:
-    52px
+    12px
     var(--page-padding)
     80px;
 
@@ -440,7 +440,7 @@ main {
     This gives the compact vertical look from the
     reference screenshots.
   */
-  aspect-ratio: 0.78 / 1;
+  aspect-ratio: 4 / 5;
 
   height: auto;
 
@@ -559,7 +559,7 @@ main {
 .cards.two-cards .work-card img {
   width: 100%;
 
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 5;
 
   object-fit: cover;
 }
@@ -663,16 +663,27 @@ main {
   */
   max-width: 100%;
 
-  max-height: 90px;
+  max-height: 115px;
 
   object-fit: contain;
 }
 
+.caro-logo {
+  background-image: url("assets/cands.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.caro-logo span,
+.caro-logo small {
+  display: none;
+}
+
 .caro-logo img {
   width: auto;
-
-  max-width: 150px;
-  max-height: 105px;
+  max-width: 180px;
+  max-height: 120px;
 }
 
 
@@ -683,8 +694,8 @@ main {
 .create {
   width: 100%;
 
-  height: 620px;
-  min-height: 620px;
+  height: 560px;
+  min-height: 560px;
 
   display: grid;
 
@@ -702,13 +713,13 @@ main {
 .create-copy {
   min-width: 0;
 
-  height: 620px;
+  height: 560px;
 
   /*
     Move the entire content upward slightly.
   */
   padding:
-    48px
+    30px
     clamp(38px, 6vw, 90px);
 
   display: flex;
@@ -767,7 +778,7 @@ main {
 .create-image {
   min-width: 0;
 
-  height: 620px;
+  height: 560px;
 
   overflow: hidden;
 }
@@ -788,8 +799,8 @@ main {
 .contact {
   width: 100%;
 
-  height: 620px;
-  min-height: 620px;
+  height: 560px;
+  min-height: 560px;
 
   display: grid;
 
@@ -807,7 +818,7 @@ main {
 .contact-image {
   min-width: 0;
 
-  height: 620px;
+  height: 560px;
 
   overflow: hidden;
 }
@@ -823,10 +834,10 @@ main {
 .contact-copy {
   min-width: 0;
 
-  height: 620px;
+  height: 560px;
 
   padding:
-    65px
+    48px
     clamp(38px, 6vw, 90px);
 
   display: flex;
@@ -1405,112 +1416,70 @@ main {
   }
 }
 
+
 /* =========================================================
-   FINAL DESKTOP CORRECTIONS
+   DESKTOP FINAL VALUES
    ========================================================= */
-
 @media (min-width: 721px) {
-
-  /* NAV: restore the brown gradient and make the logo visible at the intended size */
   .site-nav {
-    background: linear-gradient(
-      90deg,
-      var(--header-dark) 0%,
-      var(--header-mid) 52%,
-      var(--header-light) 100%
-    );
+    background: linear-gradient(90deg, var(--header-dark) 0%, var(--header-mid) 52%, var(--header-light) 100%);
   }
 
-  .nav-brand {
-    width: 70px;
-    height: 70px;
-  }
+  .nav-brand { width: 70px; height: 70px; }
+  .nav-brand img { width: 64px; height: 64px; }
 
-  .nav-brand img {
-    width: 64px;
-    height: 64px;
-  }
-
-  /* HERO: taller viewport fill, slightly wider image, keep the established composition */
   .hero {
     height: 100vh;
     min-height: 760px;
     max-height: none;
-    grid-template-columns:
-      minmax(0, 1.38fr)
-      minmax(450px, 1fr);
+    grid-template-columns: minmax(0, 1.32fr) minmax(450px, 1fr);
   }
 
-  .hero-copy .button {
-    margin-top: 54px;
-  }
+  .hero-copy .button { margin-top: 64px; }
 
-  /* INTRO / SELECTED WORK: reduce the empty transition space */
   .intro {
-    min-height: 390px;
-    padding:
-      52px
-      var(--page-padding)
-      38px;
+    min-height: 330px;
+    padding: 44px var(--page-padding) 30px;
   }
 
   .work {
-    padding:
-      24px
-      var(--page-padding)
-      80px;
+    padding: 12px var(--page-padding) 80px;
   }
 
-  /* FEATURED REELS: all three use the same short 4:5 frame */
-  .cards.featured .video-card {
+  .cards.featured .video-card,
+  .cards.two-cards .video-card {
     aspect-ratio: 4 / 5;
     height: auto;
   }
 
-  .cards.featured .video-card video {
+  .cards.featured .video-card video,
+  .cards.two-cards .video-card video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center center;
   }
 
-  /* COLLABORATION LOGOS: preserve 4 + 3 layout, increase visual size */
-  .logo-item img {
-    max-height: 100px;
+  .logo-item img { max-height: 115px; }
+  .caro-logo {
+    background-image: url("assets/cands.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
   }
+  .caro-logo span, .caro-logo small { display: none; }
 
-  .caro-logo img {
-    max-width: 165px;
-    max-height: 112px;
+  .create, .create-copy, .create-image {
+    height: 560px;
+    min-height: 560px;
   }
+  .create-copy { padding-top: 30px; }
 
-  /* WHAT I CREATE: move the heading/content upward without changing the image width */
-  .create-copy {
-    padding-top: 28px;
+  .contact, .contact-image, .contact-copy {
+    height: 560px;
+    min-height: 560px;
   }
+  .contact-copy { padding-top: 48px; padding-bottom: 48px; }
 
-  /* CONTACT: keep image/copy exactly aligned and make the footer touch the section */
-  .contact,
-  .contact-image,
-  .contact-copy {
-    height: 620px;
-    min-height: 620px;
-  }
-
-  .contact-copy {
-    padding-top: 54px;
-    padding-bottom: 54px;
-  }
-
-  .contact-copy h2 {
-    margin-bottom: 24px;
-  }
-
-  .contact {
-    margin-bottom: 0;
-  }
-
-  .site-footer {
-    margin-top: 0;
-  }
+  .contact { margin-bottom: 0; }
+  .site-footer { margin-top: 0; }
 }
