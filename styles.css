@@ -1,30 +1,23 @@
 /* =========================================================
-   SIM IN THE CITY — COMPLETE STYLESHEET
-   Reference layout preserved; current refinements:
-   - no horizontal overflow
-   - consistent reel dimensions/cropping
-   - 4 + 3 collaboration logo grid
-   - full-bleed split sections with touching image corners
-   - balanced Create / Contact proportions
-   - footer directly follows the final section
-========================================================= */
+   SIM IN THE CITY
+   STABLE REFERENCE STYLES
+   ========================================================= */
 
 :root {
-  --cream: #f5ead3;
-  --cream-deep: #ead9b8;
+  --cream: #f6ead2;
+  --cream-dark: #ead9b8;
   --ink: #17130f;
-  --header-dark: #403126;
-  --header-mid: #6a5039;
+  --header-dark: #3f3025;
+  --header-dark-2: #584433;
+
   --serif: "Cormorant Garamond", Georgia, serif;
-  --sans: "Inter", Arial, sans-serif;
+  --sans: Inter, Arial, sans-serif;
+
   --nav-height: 76px;
-  --content-width: 1180px;
-  --section-pad: clamp(72px, 8vw, 125px);
+  --page-padding: clamp(28px, 5vw, 72px);
 }
 
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
 }
 
@@ -35,10 +28,10 @@ html {
 
 body {
   margin: 0;
-  min-width: 0;
-  overflow-x: hidden;
+  padding: 0;
   background: #000;
   color: var(--ink);
+  overflow-x: hidden;
   font-family: var(--sans);
   -webkit-font-smoothing: antialiased;
 }
@@ -49,82 +42,89 @@ video {
   max-width: 100%;
 }
 
-button,
 a {
-  font: inherit;
+  color: inherit;
+  text-decoration: none;
 }
 
 button {
-  border: 0;
-}
-
-a {
-  color: inherit;
+  font: inherit;
 }
 
 main {
-  overflow: hidden;
-}
-
-.section {
   width: 100%;
-  padding-left: clamp(28px, 7vw, 100px);
-  padding-right: clamp(28px, 7vw, 100px);
-  background: var(--cream);
+  overflow: hidden;
 }
 
 /* =========================================================
    NAVIGATION
-========================================================= */
+   ========================================================= */
 
 .site-nav {
   position: absolute;
-  z-index: 50;
+  z-index: 100;
+
   top: 0;
   left: 0;
   right: 0;
 
   height: var(--nav-height);
-  padding: 0 clamp(28px, 4.5vw, 68px);
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
-  color: var(--ink);
-  background: transparent;
+  padding: 0 clamp(28px, 4.5vw, 68px);
+
+  /*
+    Important:
+    The header is now completely opaque so the hero photo
+    cannot visually continue behind the navigation.
+  */
+  background: linear-gradient(
+    100deg,
+    var(--header-dark),
+    var(--header-dark-2)
+  );
+
+  color: #f8eedc;
 }
 
 .nav-brand {
   width: 46px;
   height: 46px;
-  flex: 0 0 46px;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  flex-shrink: 0;
 }
 
 .nav-brand img {
   width: 42px;
   height: 42px;
   object-fit: contain;
+
+  filter: invert(1);
 }
 
 .desktop-nav {
+  margin-left: auto;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   gap: clamp(16px, 2vw, 28px);
-  margin-left: auto;
 }
 
 .desktop-nav a,
 .desktop-nav span {
-  color: var(--ink);
-  text-decoration: none;
+  color: #f8eedc;
+
   font-family: var(--serif);
   font-size: clamp(18px, 1.55vw, 25px);
+
   line-height: 1;
   white-space: nowrap;
 }
@@ -134,7 +134,7 @@ main {
 }
 
 .desktop-nav a:hover {
-  opacity: 0.68;
+  opacity: 0.65;
 }
 
 .mobile-menu-button,
@@ -144,25 +144,31 @@ main {
 
 /* =========================================================
    HERO
-========================================================= */
+   ========================================================= */
 
 .hero {
   position: relative;
+
+  width: 100%;
+  height: 820px;
+  min-height: 820px;
+
   display: grid;
-  grid-template-columns: minmax(0, 1.62fr) minmax(320px, 1fr);
-  min-height: 760px;
+  grid-template-columns: minmax(0, 1.65fr) minmax(360px, 1fr);
+
   background: var(--cream);
+
   overflow: hidden;
 }
 
 .hero-copy {
   min-width: 0;
-  min-height: 760px;
+  height: 820px;
 
   padding:
-    calc(var(--nav-height) + 55px)
-    clamp(30px, 5vw, 78px)
-    70px;
+    calc(var(--nav-height) + 20px)
+    clamp(32px, 5vw, 78px)
+    55px;
 
   display: flex;
   flex-direction: column;
@@ -173,18 +179,23 @@ main {
 }
 
 .hero-logo {
-  width: min(82%, 760px);
+  width: min(80%, 720px);
   height: auto;
-  margin: 0 auto clamp(24px, 3vw, 38px);
+
+  margin: 0 auto 25px;
 }
 
 .hero-tagline {
-  margin: 0 0 clamp(28px, 3vw, 42px);
+  margin: 0 0 30px;
 
   font-family: var(--serif);
   font-style: italic;
-  font-size: clamp(25px, 2.6vw, 42px);
-  line-height: 1.08;
+
+  /*
+    Deliberately smaller than the previous version.
+  */
+  font-size: clamp(26px, 2.4vw, 38px);
+  line-height: 1.05;
 }
 
 .button {
@@ -199,12 +210,11 @@ main {
 
   background: linear-gradient(
     100deg,
-    #907453,
-    #edc990
+    #8f7455,
+    #edca91
   );
 
   color: #fff;
-  text-decoration: none;
 
   font-family: var(--sans);
   font-size: 15px;
@@ -224,26 +234,32 @@ main {
 
 .hero-image {
   min-width: 0;
-  min-height: 760px;
+  height: 820px;
+
   overflow: hidden;
 }
 
 .hero-image img {
   width: 100%;
   height: 100%;
+
   object-fit: cover;
   object-position: center center;
 }
 
 /* =========================================================
    INTRO
-========================================================= */
+   ========================================================= */
 
 .intro {
-  min-height: 590px;
+  width: 100%;
 
-  padding-top: clamp(85px, 9vw, 135px);
-  padding-bottom: clamp(75px, 8vw, 115px);
+  min-height: 500px;
+
+  padding:
+    88px
+    var(--page-padding)
+    72px;
 
   display: flex;
   flex-direction: column;
@@ -251,17 +267,20 @@ main {
   justify-content: center;
 
   text-align: center;
+
+  background: var(--cream);
 }
 
 .intro h2 {
-  max-width: 900px;
+  max-width: 920px;
 
-  margin: 0 0 42px;
+  margin: 0 0 34px;
 
   font-family: var(--serif);
-  font-size: clamp(48px, 5.4vw, 78px);
+  font-size: clamp(48px, 5.1vw, 76px);
   line-height: 0.94;
   font-weight: 600;
+
   letter-spacing: -0.025em;
 }
 
@@ -270,10 +289,10 @@ main {
 }
 
 .intro-copy p {
-  margin: 0 0 28px;
+  margin: 0 0 27px;
 
-  font-size: clamp(17px, 1.35vw, 21px);
-  line-height: 1.55;
+  font-size: clamp(17px, 1.3vw, 21px);
+  line-height: 1.5;
 }
 
 .intro-copy p:last-child {
@@ -282,10 +301,11 @@ main {
 
 /* =========================================================
    SHARED SECTION HEADINGS
-========================================================= */
+   ========================================================= */
 
 .section-heading {
-  margin: 0 auto clamp(48px, 5vw, 72px);
+  margin: 0 auto 55px;
+
   text-align: center;
 }
 
@@ -293,39 +313,33 @@ main {
   margin: 0 0 14px;
 
   font-family: var(--serif);
-  font-size: clamp(50px, 5.2vw, 78px);
+  font-size: clamp(50px, 5.1vw, 76px);
   line-height: 0.94;
   font-weight: 600;
+
   letter-spacing: -0.025em;
 }
 
 .section-heading p {
   margin: 0;
 
-  font-size: clamp(17px, 1.45vw, 22px);
+  font-size: clamp(17px, 1.4vw, 21px);
   line-height: 1.45;
-}
-
-.section-heading.small {
-  margin-bottom: 40px;
-}
-
-.section-heading.small h2 {
-  font-size: clamp(42px, 4.2vw, 64px);
-}
-
-.section-heading.left {
-  text-align: left;
-  margin: 0 0 clamp(38px, 4vw, 56px);
 }
 
 /* =========================================================
    SELECTED WORK
-========================================================= */
+   ========================================================= */
 
 .work {
-  padding-top: clamp(95px, 8vw, 120px);
-  padding-bottom: clamp(95px, 8vw, 120px);
+  width: 100%;
+
+  padding:
+    82px
+    var(--page-padding)
+    90px;
+
+  background: var(--cream);
 }
 
 .cards {
@@ -334,12 +348,10 @@ main {
 
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(28px, 3.2vw, 50px);
-}
 
-.cards.two-cards {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  width: min(950px, 100%);
+  gap: clamp(28px, 3.2vw, 48px);
+
+  align-items: start;
 }
 
 .work-card {
@@ -347,31 +359,50 @@ main {
   text-align: center;
 }
 
+/*
+  ALL THREE reels use the exact same container.
+  The source video's native dimensions are irrelevant.
+*/
 .video-card {
   position: relative;
 
-  display: block;
-
   width: 100%;
-  height: 540px;
+  aspect-ratio: 9 / 16;
 
-  padding: 0;
+  height: auto;
+  min-height: 0;
+
   margin: 0;
+  padding: 0;
 
   overflow: hidden;
 
-  background: #1b1713;
+  border: 0;
+
+  background: #1a1612;
 
   cursor: pointer;
+
   appearance: none;
 }
 
-.video-card video {
+.video-card video,
+.work-card video {
+  position: absolute;
+
+  inset: 0;
+
   width: 100%;
   height: 100%;
 
+  /*
+    This is what makes all three reels crop identically.
+  */
   object-fit: cover;
   object-position: center center;
+
+  margin: 0;
+  padding: 0;
 
   pointer-events: none;
 }
@@ -380,11 +411,7 @@ main {
   position: absolute;
   inset: 0;
 
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.04),
-    rgba(0, 0, 0, 0.10)
-  );
+  background: rgba(0, 0, 0, 0.04);
 
   pointer-events: none;
 }
@@ -392,23 +419,24 @@ main {
 .play {
   position: absolute;
 
-  left: 50%;
   top: 50%;
-
-  transform: translate(-50%, -50%);
+  left: 50%;
 
   width: 66px;
   height: 66px;
 
-  border-radius: 50%;
+  transform: translate(-50%, -50%);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background: rgba(22, 18, 14, 0.72);
+  border-radius: 50%;
+
+  background: rgba(24, 20, 16, 0.72);
 
   color: #fff;
+
   font-size: 21px;
 
   padding-left: 3px;
@@ -417,48 +445,75 @@ main {
 }
 
 .work-card h3 {
-  margin: 19px 0 3px;
+  margin: 18px 0 3px;
 
   font-family: var(--serif);
   font-size: clamp(25px, 2vw, 31px);
-  line-height: 1.1;
+  line-height: 1.08;
   font-weight: 500;
 }
 
 .work-card em {
   font-family: var(--serif);
-  font-size: clamp(16px, 1.3vw, 19px);
+  font-size: clamp(16px, 1.25vw, 19px);
   line-height: 1.2;
 }
 
 .category {
-  margin-top: clamp(82px, 8vw, 125px);
-}
-
-.category:first-of-type {
-  margin-top: clamp(85px, 8vw, 120px);
+  margin-top: 90px;
 }
 
 /* =========================================================
-   COLLABORATIONS
-========================================================= */
+   SECONDARY WORK ROW
+   ========================================================= */
+
+.cards.two-cards {
+  width: min(950px, 100%);
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: clamp(30px, 4vw, 70px);
+}
+
+/* Keep non-video work imagery consistent */
+.cards.two-cards .work-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+
+  object-fit: cover;
+}
+
+/* =========================================================
+   SELECTED COLLABORATIONS
+   ========================================================= */
 
 .collaborations {
-  padding-top: clamp(90px, 8vw, 120px);
-  padding-bottom: clamp(90px, 8vw, 120px);
+  width: 100%;
+
+  padding:
+    80px
+    var(--page-padding)
+    85px;
+
+  background: var(--cream);
+}
+
+.collaborations .section-heading {
+  margin-bottom: 42px;
 }
 
 .logos {
-  width: min(1050px, 100%);
+  width: min(1080px, 100%);
   margin: 0 auto;
 
   display: grid;
 
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-rows: repeat(2, minmax(100px, auto));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 
-  column-gap: clamp(10px, 1.5vw, 20px);
-  row-gap: 28px;
+  grid-template-rows: auto auto;
+
+  column-gap: 34px;
+  row-gap: 25px;
 
   align-items: center;
   justify-items: center;
@@ -466,208 +521,263 @@ main {
 
 .logo-item {
   width: 100%;
-  height: 125px;
+  height: 115px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* First row: 4 logos */
+/*
+  First row = 4 logos
+*/
 .logo-item:nth-child(1) {
-  grid-column: 1 / span 3;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .logo-item:nth-child(2) {
-  grid-column: 4 / span 3;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .logo-item:nth-child(3) {
-  grid-column: 7 / span 3;
+  grid-column: 3;
+  grid-row: 1;
 }
 
 .logo-item:nth-child(4) {
-  grid-column: 10 / span 3;
+  grid-column: 4;
+  grid-row: 1;
 }
 
-/* Second row: 3 logos centered */
+/*
+  Second row = 3 logos centered
+*/
 .logo-item:nth-child(5) {
-  grid-column: 2 / span 3;
+  grid-column: 1 / span 1;
+  grid-row: 2;
+
+  transform: translateX(50%);
 }
 
 .logo-item:nth-child(6) {
-  grid-column: 5 / span 3;
+  grid-column: 2 / span 1;
+  grid-row: 2;
+
+  transform: translateX(50%);
 }
 
 .logo-item:nth-child(7) {
-  grid-column: 8 / span 3;
+  grid-column: 3 / span 1;
+  grid-row: 2;
+
+  transform: translateX(50%);
 }
 
 .logo-item img {
   width: auto;
   max-width: 100%;
-  max-height: 92px;
+  max-height: 86px;
+
   object-fit: contain;
 }
 
 .caro-logo img {
-  max-width: 130px;
-  max-height: 105px;
+  width: auto;
+  max-width: 145px;
+  max-height: 100px;
 }
 
 /* =========================================================
-   CREATE / CONTACT
-========================================================= */
+   WHAT I CREATE
+   ========================================================= */
 
-.section-split {
+/*
+  Important:
+  Create is its OWN grid.
+  Contact is NOT inside this grid.
+*/
+
+.create {
   width: 100%;
-
-  padding-left: 0;
-  padding-right: 0;
+  height: 620px;
+  min-height: 620px;
 
   display: grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
-
-  align-items: stretch;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 
   gap: 0;
+
+  background: var(--cream);
+
+  overflow: hidden;
 }
 
-.create-copy,
-.contact-copy {
+.create-copy {
   min-width: 0;
+  height: 620px;
 
   padding:
-    clamp(70px, 7vw, 105px)
-    clamp(38px, 6.5vw, 100px);
+    65px
+    clamp(38px, 6vw, 90px);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
 
-.create-copy {
-  order: 0;
-}
-
-.create-image {
-  order: 1;
-}
-
-.create-image,
-.contact-image {
-  min-width: 0;
-  overflow: hidden;
-}
-
-.create-image img,
-.contact-image img {
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-
-  object-fit: cover;
-}
-
-.create {
-  height: 590px;
+  background: var(--cream);
 }
 
 .create-copy .section-heading {
-  margin-bottom: clamp(35px, 4vw, 52px);
+  margin: 0 0 42px;
+
+  text-align: left;
 }
 
 .create-copy .section-heading h2 {
-  font-size: clamp(48px, 5vw, 72px);
+  font-size: clamp(48px, 4.8vw, 70px);
+}
+
+.create-copy .section-heading p {
+  text-align: left;
 }
 
 .offer {
   display: grid;
-  gap: clamp(26px, 3vw, 40px);
+  gap: 28px;
 }
 
 .offer-item h3 {
-  margin: 0 0 8px;
+  margin: 0 0 7px;
 
   font-family: var(--serif);
-  font-size: clamp(25px, 2.15vw, 32px);
+  font-size: clamp(25px, 2vw, 31px);
   line-height: 1.05;
   font-weight: 500;
 }
 
 .offer-item p {
-  max-width: 600px;
+  max-width: 610px;
 
   margin: 0;
 
   font-family: var(--serif);
-  font-size: clamp(17px, 1.35vw, 20px);
-  line-height: 1.45;
+  font-size: clamp(17px, 1.3vw, 20px);
+  line-height: 1.4;
 }
 
-.contact {
-  min-height: 0;
+.create-image {
+  min-width: 0;
   height: 620px;
+
+  overflow: hidden;
+}
+
+.create-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact {
+  width: 100%;
+  height: 620px;
+  min-height: 620px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+  gap: 0;
+
+  background: var(--cream);
+
+  overflow: hidden;
 }
 
 .contact-image {
-  order: 0;
+  min-width: 0;
   height: 620px;
+
+  overflow: hidden;
+}
+
+.contact-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center center;
 }
 
 .contact-copy {
-  order: 1;
-  min-height: 0;
+  min-width: 0;
   height: 620px;
+
+  padding:
+    65px
+    clamp(38px, 6vw, 90px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: var(--cream);
 }
 
 .contact-copy h2 {
-  margin: 0 0 28px;
+  max-width: 570px;
+
+  margin: 0 0 30px;
 
   font-family: var(--serif);
-  font-size: clamp(48px, 5vw, 73px);
+  font-size: clamp(48px, 4.7vw, 70px);
   line-height: 0.94;
   font-weight: 600;
+
   letter-spacing: -0.025em;
 }
 
 .contact-copy > p {
-  max-width: 590px;
+  max-width: 600px;
 
-  margin: 0 0 34px;
+  margin: 0 0 30px;
 
-  font-size: clamp(17px, 1.35vw, 21px);
+  font-size: clamp(17px, 1.3vw, 20px);
   line-height: 1.45;
 }
 
 .contact-links {
   display: grid;
-  gap: 20px;
+  gap: 18px;
 
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 
 .contact-links a {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-
-  text-decoration: none;
+  gap: 4px;
 }
 
 .contact-links small {
   font-family: var(--sans);
   font-size: 10px;
   font-weight: 700;
+
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 .contact-links span {
   font-family: var(--serif);
-  font-size: clamp(19px, 1.55vw, 24px);
+  font-size: clamp(19px, 1.5vw, 24px);
 }
 
 .contact-copy .button {
@@ -676,21 +786,23 @@ main {
 
 /* =========================================================
    FOOTER
-========================================================= */
+   ========================================================= */
 
 .site-footer {
-  min-height: 230px;
-  margin: 0;
-  clear: both;
+  width: 100%;
 
-  padding: 65px 30px 55px;
+  min-height: 220px;
+  height: 220px;
+
+  margin: 0;
+  padding: 45px 30px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  background: var(--cream-deep);
+  background: var(--cream-dark);
 
   text-align: center;
 }
@@ -699,19 +811,19 @@ main {
   width: min(190px, 42vw);
   height: auto;
 
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .site-footer p {
   margin: 0;
 
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.18em;
 }
 
 /* =========================================================
    VIDEO MODAL
-========================================================= */
+   ========================================================= */
 
 .video-modal {
   width: min(92vw, 620px);
@@ -721,26 +833,22 @@ main {
   border: 0;
 
   background: #111;
-
-  overflow: visible;
 }
 
 .video-modal::backdrop {
-  background: rgba(0, 0, 0, 0.78);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .video-modal video {
   width: 100%;
   max-height: 90vh;
-
-  background: #000;
 }
 
 .modal-close {
   position: absolute;
 
-  right: -44px;
   top: -10px;
+  right: -44px;
 
   width: 36px;
   height: 36px;
@@ -748,6 +856,7 @@ main {
   background: transparent;
 
   color: #fff;
+
   font-size: 34px;
   line-height: 1;
 
@@ -755,96 +864,57 @@ main {
 }
 
 /* =========================================================
-   TABLET — 1000px
-========================================================= */
+   TABLET
+   ========================================================= */
 
 @media (max-width: 1000px) {
 
-  :root {
-    --nav-height: 70px;
-  }
-
-  .desktop-nav {
-    gap: 18px;
-  }
-
-  .desktop-nav a,
-  .desktop-nav span {
-    font-size: 19px;
-  }
-
   .hero {
-    grid-template-columns: 1fr;
+    height: 760px;
+    min-height: 760px;
+  }
+
+  .hero-copy,
+  .hero-image {
+    height: 760px;
   }
 
   .hero-copy {
-    min-height: 620px;
-
-    padding:
-      calc(var(--nav-height) + 65px)
-      35px
-      70px;
-  }
-
-  .hero-logo {
-    width: min(82%, 700px);
-  }
-
-  .hero-image {
-    height: 650px;
-    min-height: 650px;
+    padding-left: 35px;
+    padding-right: 35px;
   }
 
   .cards {
-    gap: 30px;
+    gap: 28px;
   }
 
-  .video-card {
-    height: 500px;
-  }
-
-  .logos {
-    width: min(900px, 100%);
-    column-gap: 30px;
-  }
-
-  .section-split {
-    grid-template-columns: 1fr;
-  }
-
-  .create-copy,
-  .contact-copy {
-    padding: 75px 6.5vw;
-  }
-
-  .create-image,
-  .contact-image {
+  .create,
+  .contact {
     height: 560px;
     min-height: 560px;
   }
 
-  .create-image {
-    order: -1;
-  }
-
+  .create-copy,
+  .create-image,
+  .contact-copy,
   .contact-image {
-    order: 0;
+    height: 560px;
   }
 
   .create-copy,
   .contact-copy {
-    min-height: auto;
+    padding-left: 45px;
+    padding-right: 45px;
   }
 
-  .contact-copy {
-    padding-top: 75px;
-    padding-bottom: 75px;
+  .logos {
+    column-gap: 18px;
   }
 }
 
 /* =========================================================
-   MOBILE — 720px
-========================================================= */
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 720px) {
 
@@ -854,18 +924,6 @@ main {
 
   .site-nav {
     padding: 0 20px;
-    justify-content: space-between;
-  }
-
-  .nav-brand {
-    width: 42px;
-    height: 42px;
-    flex-basis: 42px;
-  }
-
-  .nav-brand img {
-    width: 38px;
-    height: 38px;
   }
 
   .desktop-nav {
@@ -875,17 +933,18 @@ main {
   .mobile-menu-button {
     display: flex;
 
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-
     width: 40px;
     height: 40px;
 
     padding: 8px;
 
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 5px;
+
     background: transparent;
-    color: #fff;
+    color: #f8eedc;
 
     cursor: pointer;
   }
@@ -907,23 +966,20 @@ main {
     right: 0;
 
     display: flex;
-
     flex-direction: column;
 
-    padding: 15px 20px 20px;
+    padding: 12px 20px 20px;
 
-    background: #46352a;
-
-    border-bottom: 1px solid rgba(255,255,255,0.18);
+    background: var(--header-dark);
 
     opacity: 0;
     pointer-events: none;
 
-    transform: translateY(-10px);
+    transform: translateY(-8px);
 
     transition:
-      opacity 0.25s ease,
-      transform 0.25s ease;
+      opacity 0.2s ease,
+      transform 0.2s ease;
   }
 
   .mobile-nav.open {
@@ -933,35 +989,41 @@ main {
   }
 
   .mobile-nav a {
-    padding: 14px 5px;
+    padding: 13px 5px;
 
-    color: #fffaf0;
-    text-decoration: none;
+    color: #f8eedc;
 
     font-family: var(--serif);
     font-size: 25px;
   }
 
+  /* HERO */
+
   .hero {
+    height: auto;
+    min-height: 0;
+
     display: flex;
     flex-direction: column;
-    min-height: auto;
   }
 
   .hero-copy {
-    min-height: 500px;
+    height: 560px;
+    min-height: 560px;
 
-    padding: 95px 22px 55px;
+    padding:
+      calc(var(--nav-height) + 50px)
+      22px
+      45px;
   }
 
   .hero-logo {
-    width: 92%;
-    margin-bottom: 26px;
+    width: 91%;
+    margin-bottom: 25px;
   }
 
   .hero-tagline {
-    font-size: 29px;
-    margin-bottom: 28px;
+    font-size: 28px;
   }
 
   .hero-image {
@@ -969,76 +1031,73 @@ main {
     min-height: 560px;
   }
 
+  /* INTRO */
+
   .intro {
     min-height: 0;
-    padding: 85px 22px;
+
+    padding:
+      75px
+      22px
+      70px;
   }
 
   .intro h2 {
     font-size: 46px;
-    margin-bottom: 34px;
   }
 
-  .intro-copy p {
-    font-size: 17px;
-  }
+  /* WORK */
 
-  .work,
-  .collaborations {
-    padding-left: 22px;
-    padding-right: 22px;
-  }
-
-  .section-heading {
-    margin-bottom: 38px;
-  }
-
-  .section-heading h2 {
-    font-size: 48px;
-  }
-
-  .section-heading p {
-    font-size: 17px;
+  .work {
+    padding:
+      72px
+      22px
+      80px;
   }
 
   .cards,
   .cards.two-cards {
-    grid-template-columns: 1fr;
     width: 100%;
+
+    grid-template-columns: 1fr;
+
     gap: 42px;
   }
 
   .video-card {
-    height: auto;
     aspect-ratio: 9 / 16;
   }
 
   .category {
-    margin-top: 80px;
+    margin-top: 75px;
   }
 
-  .section-heading.small {
-    margin-bottom: 30px;
-  }
+  /* COLLABORATIONS */
 
-  .section-heading.small h2 {
-    font-size: 42px;
-  }
-
-  .work-card h3 {
-    font-size: 27px;
+  .collaborations {
+    padding:
+      72px
+      22px
+      75px;
   }
 
   .logos {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: none;
-    gap: 24px 16px;
+
+    gap: 15px;
+
+    row-gap: 20px;
   }
 
   .logo-item,
   .logo-item:nth-child(n) {
     grid-column: auto;
+    grid-row: auto;
+
+    width: 100%;
     height: 78px;
+
+    transform: none;
   }
 
   .logo-item img {
@@ -1046,89 +1105,97 @@ main {
     max-height: 60px;
   }
 
-  .caro-logo img {
-    max-width: 90px;
-    max-height: 72px;
-  }
+  /* CREATE */
 
-  .section-split {
+  .create {
+    height: auto;
+    min-height: 0;
+
     display: flex;
     flex-direction: column;
   }
 
-  .create-copy,
-  .contact-copy {
-    padding: 70px 28px;
-  }
+  .create-copy {
+    order: 0;
 
-  .create-image,
-  .contact-image {
     width: 100%;
-    height: 520px;
-    min-height: 520px;
+    height: auto;
+    min-height: 540px;
+
+    padding:
+      65px
+      28px;
   }
 
   .create-image {
-    order: -1;
+    order: 1;
+
+    width: 100%;
+    height: 500px;
+    min-height: 500px;
+  }
+
+  .create-copy .section-heading {
+    margin-bottom: 38px;
+  }
+
+  .offer {
+    gap: 27px;
+  }
+
+  /* CONTACT */
+
+  .contact {
+    height: auto;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
   }
 
   .contact-image {
     order: 0;
-  }
 
-  .create-copy .section-heading.left {
-    margin-bottom: 36px;
-  }
-
-  .create-copy .section-heading h2,
-  .contact-copy h2 {
-    font-size: 51px;
-  }
-
-  .offer {
-    gap: 28px;
-  }
-
-  .offer-item h3 {
-    font-size: 29px;
-  }
-
-  .offer-item p {
-    font-size: 18px;
+    width: 100%;
+    height: 500px;
+    min-height: 500px;
   }
 
   .contact-copy {
-    min-height: auto;
+    order: 1;
+
+    width: 100%;
+    height: auto;
+    min-height: 540px;
+
+    padding:
+      65px
+      28px;
   }
 
-  .contact-copy > p {
-    font-size: 18px;
-  }
-
-  .contact-links span {
-    font-size: 22px;
+  .contact-copy h2 {
+    font-size: 51px;
   }
 
   .contact-copy .button {
     width: 100%;
   }
 
-  .site-footer {
-    min-height: 190px;
-    padding: 55px 20px 45px;
-  }
+  /* FOOTER */
 
-  .site-footer img {
-    width: 165px;
+  .site-footer {
+    height: 190px;
+    min-height: 190px;
+
+    padding: 45px 20px;
   }
 }
 
 /* =========================================================
    REDUCED MOTION
-========================================================= */
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
   html {
     scroll-behavior: auto;
   }
@@ -1136,7 +1203,7 @@ main {
   *,
   *::before,
   *::after {
-    transition: none !important;
     animation: none !important;
+    transition: none !important;
   }
 }
