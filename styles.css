@@ -1,8 +1,7 @@
 /* =========================================================
-   SIM IN THE CITY â€” COMPLETE STYLESHEET
+   SIM IN THE CITY — COMPLETE STYLESHEET
    Reference layout preserved; current refinements:
    - no horizontal overflow
-   - darker readable header treatment
    - consistent reel dimensions/cropping
    - 4 + 3 collaboration logo grid
    - full-bleed split sections with touching image corners
@@ -74,6 +73,10 @@ main {
   background: var(--cream);
 }
 
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
 .site-nav {
   position: absolute;
   z-index: 50;
@@ -88,24 +91,15 @@ main {
   align-items: center;
   justify-content: space-between;
 
-  color: #f8f0df;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(42, 31, 23, 0.90) 0%,
-      rgba(54, 40, 29, 0.72) 42%,
-      rgba(64, 47, 33, 0.30) 78%,
-      rgba(64, 47, 33, 0) 100%
-    );
-
-  transition: background 0.25s ease;
+  color: var(--ink);
+  background: transparent;
 }
 
 .nav-brand {
   width: 46px;
   height: 46px;
   flex: 0 0 46px;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,7 +109,6 @@ main {
   width: 42px;
   height: 42px;
   object-fit: contain;
-  filter: brightness(0) invert(1);
 }
 
 .desktop-nav {
@@ -128,7 +121,7 @@ main {
 
 .desktop-nav a,
 .desktop-nav span {
-  color: #fffaf0;
+  color: var(--ink);
   text-decoration: none;
   font-family: var(--serif);
   font-size: clamp(18px, 1.55vw, 25px);
@@ -157,16 +150,17 @@ main {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.62fr) minmax(320px, 1fr);
-  min-height: min(780px, 92vh);
+  min-height: 760px;
   background: var(--cream);
   overflow: hidden;
 }
 
 .hero-copy {
   min-width: 0;
-  min-height: min(780px, 92vh);
+  min-height: 760px;
+
   padding:
-    calc(var(--nav-height) + clamp(55px, 7vw, 95px))
+    calc(var(--nav-height) + 55px)
     clamp(30px, 5vw, 78px)
     70px;
 
@@ -174,6 +168,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   text-align: center;
 }
 
@@ -185,6 +180,7 @@ main {
 
 .hero-tagline {
   margin: 0 0 clamp(28px, 3vw, 42px);
+
   font-family: var(--serif);
   font-style: italic;
   font-size: clamp(25px, 2.6vw, 42px);
@@ -200,15 +196,25 @@ main {
   padding: 0 27px;
 
   border-radius: 999px;
-  background: linear-gradient(100deg, #907453, #edc990);
+
+  background: linear-gradient(
+    100deg,
+    #907453,
+    #edc990
+  );
+
   color: #fff;
   text-decoration: none;
+
   font-family: var(--sans);
   font-size: 15px;
   font-weight: 600;
 
   box-shadow: 0 12px 28px rgba(84, 61, 38, 0.16);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .button:hover {
@@ -218,7 +224,7 @@ main {
 
 .hero-image {
   min-width: 0;
-  min-height: min(780px, 92vh);
+  min-height: 760px;
   overflow: hidden;
 }
 
@@ -235,6 +241,7 @@ main {
 
 .intro {
   min-height: 590px;
+
   padding-top: clamp(85px, 9vw, 135px);
   padding-bottom: clamp(75px, 8vw, 115px);
 
@@ -242,12 +249,15 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   text-align: center;
 }
 
 .intro h2 {
   max-width: 900px;
+
   margin: 0 0 42px;
+
   font-family: var(--serif);
   font-size: clamp(48px, 5.4vw, 78px);
   line-height: 0.94;
@@ -261,6 +271,7 @@ main {
 
 .intro-copy p {
   margin: 0 0 28px;
+
   font-size: clamp(17px, 1.35vw, 21px);
   line-height: 1.55;
 }
@@ -280,6 +291,7 @@ main {
 
 .section-heading h2 {
   margin: 0 0 14px;
+
   font-family: var(--serif);
   font-size: clamp(50px, 5.2vw, 78px);
   line-height: 0.94;
@@ -289,6 +301,7 @@ main {
 
 .section-heading p {
   margin: 0;
+
   font-size: clamp(17px, 1.45vw, 22px);
   line-height: 1.45;
 }
@@ -311,8 +324,8 @@ main {
 ========================================================= */
 
 .work {
-  padding-top: clamp(72px, 6vw, 100px);
-  padding-bottom: clamp(70px, 7vw, 105px);
+  padding-top: clamp(95px, 8vw, 120px);
+  padding-bottom: clamp(95px, 8vw, 120px);
 }
 
 .cards {
@@ -336,13 +349,19 @@ main {
 
 .video-card {
   position: relative;
+
   display: block;
+
   width: 100%;
   height: 540px;
+
   padding: 0;
   margin: 0;
+
   overflow: hidden;
+
   background: #1b1713;
+
   cursor: pointer;
   appearance: none;
 }
@@ -350,30 +369,37 @@ main {
 .video-card video {
   width: 100%;
   height: 100%;
+
   object-fit: cover;
   object-position: center center;
+
   pointer-events: none;
 }
 
 .video-overlay {
   position: absolute;
   inset: 0;
+
   background: linear-gradient(
     180deg,
-    rgba(0,0,0,0.04),
-    rgba(0,0,0,0.10)
+    rgba(0, 0, 0, 0.04),
+    rgba(0, 0, 0, 0.10)
   );
+
   pointer-events: none;
 }
 
 .play {
   position: absolute;
+
   left: 50%;
   top: 50%;
+
   transform: translate(-50%, -50%);
 
   width: 66px;
   height: 66px;
+
   border-radius: 50%;
 
   display: flex;
@@ -381,8 +407,10 @@ main {
   justify-content: center;
 
   background: rgba(22, 18, 14, 0.72);
+
   color: #fff;
   font-size: 21px;
+
   padding-left: 3px;
 
   pointer-events: none;
@@ -390,6 +418,7 @@ main {
 
 .work-card h3 {
   margin: 19px 0 3px;
+
   font-family: var(--serif);
   font-size: clamp(25px, 2vw, 31px);
   line-height: 1.1;
@@ -415,8 +444,8 @@ main {
 ========================================================= */
 
 .collaborations {
-  padding-top: clamp(60px, 6vw, 95px);
-  padding-bottom: clamp(70px, 7vw, 105px);
+  padding-top: clamp(90px, 8vw, 120px);
+  padding-bottom: clamp(90px, 8vw, 120px);
 }
 
 .logos {
@@ -424,67 +453,95 @@ main {
   margin: 0 auto;
 
   display: grid;
+
   grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-template-rows: repeat(2, minmax(100px, auto));
+
   column-gap: clamp(10px, 1.5vw, 20px);
   row-gap: 28px;
+
   align-items: center;
   justify-items: center;
 }
 
 .logo-item {
   width: 100%;
-  height: 105px;
+  height: 125px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* First row: 4 evenly distributed logos. */
-.logo-item:nth-child(1) { grid-column: 1 / span 3; }
-.logo-item:nth-child(2) { grid-column: 4 / span 3; }
-.logo-item:nth-child(3) { grid-column: 7 / span 3; }
-.logo-item:nth-child(4) { grid-column: 10 / span 3; }
+/* First row: 4 logos */
+.logo-item:nth-child(1) {
+  grid-column: 1 / span 3;
+}
 
-/* Second row: 3 logos centered beneath the first four. */
-.logo-item:nth-child(5) { grid-column: 2 / span 3; }
-.logo-item:nth-child(6) { grid-column: 5 / span 3; }
-.logo-item:nth-child(7) { grid-column: 8 / span 3; }
+.logo-item:nth-child(2) {
+  grid-column: 4 / span 3;
+}
+
+.logo-item:nth-child(3) {
+  grid-column: 7 / span 3;
+}
+
+.logo-item:nth-child(4) {
+  grid-column: 10 / span 3;
+}
+
+/* Second row: 3 logos centered */
+.logo-item:nth-child(5) {
+  grid-column: 2 / span 3;
+}
+
+.logo-item:nth-child(6) {
+  grid-column: 5 / span 3;
+}
+
+.logo-item:nth-child(7) {
+  grid-column: 8 / span 3;
+}
 
 .logo-item img {
   width: auto;
   max-width: 100%;
-  max-height: 72px;
+  max-height: 92px;
   object-fit: contain;
 }
 
 .caro-logo img {
-  max-width: 105px;
-  max-height: 90px;
+  max-width: 130px;
+  max-height: 105px;
 }
 
 /* =========================================================
    CREATE / CONTACT
-   Images and copy meet edge-to-edge. No gap between the
-   two split sections; each image fills its own half.
 ========================================================= */
 
 .section-split {
   width: 100%;
+
   padding-left: 0;
   padding-right: 0;
 
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
   align-items: stretch;
+
   gap: 0;
 }
 
 .create-copy,
 .contact-copy {
   min-width: 0;
-  padding: clamp(70px, 7vw, 105px) clamp(38px, 6.5vw, 100px);
+
+  padding:
+    clamp(70px, 7vw, 105px)
+    clamp(38px, 6.5vw, 100px);
 
   display: flex;
   flex-direction: column;
@@ -510,11 +567,12 @@ main {
   width: 100%;
   height: 100%;
   min-height: 100%;
+
   object-fit: cover;
 }
 
 .create {
-  min-height: 620px;
+  height: 590px;
 }
 
 .create-copy .section-heading {
@@ -532,6 +590,7 @@ main {
 
 .offer-item h3 {
   margin: 0 0 8px;
+
   font-family: var(--serif);
   font-size: clamp(25px, 2.15vw, 32px);
   line-height: 1.05;
@@ -540,28 +599,33 @@ main {
 
 .offer-item p {
   max-width: 600px;
+
   margin: 0;
+
   font-family: var(--serif);
   font-size: clamp(17px, 1.35vw, 20px);
   line-height: 1.45;
 }
 
 .contact {
-  min-height: 650px;
+  min-height: 0;
+  height: 620px;
 }
 
 .contact-image {
   order: 0;
-  height: 650px;
+  height: 620px;
 }
 
 .contact-copy {
   order: 1;
-  min-height: 650px;
+  min-height: 0;
+  height: 620px;
 }
 
 .contact-copy h2 {
   margin: 0 0 28px;
+
   font-family: var(--serif);
   font-size: clamp(48px, 5vw, 73px);
   line-height: 0.94;
@@ -571,7 +635,9 @@ main {
 
 .contact-copy > p {
   max-width: 590px;
+
   margin: 0 0 34px;
+
   font-size: clamp(17px, 1.35vw, 21px);
   line-height: 1.45;
 }
@@ -579,6 +645,7 @@ main {
 .contact-links {
   display: grid;
   gap: 20px;
+
   margin-bottom: 35px;
 }
 
@@ -586,6 +653,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 5px;
+
   text-decoration: none;
 }
 
@@ -613,6 +681,8 @@ main {
 .site-footer {
   min-height: 230px;
   margin: 0;
+  clear: both;
+
   padding: 65px 30px 55px;
 
   display: flex;
@@ -621,17 +691,20 @@ main {
   justify-content: center;
 
   background: var(--cream-deep);
+
   text-align: center;
 }
 
 .site-footer img {
   width: min(190px, 42vw);
   height: auto;
+
   margin-bottom: 18px;
 }
 
 .site-footer p {
   margin: 0;
+
   font-size: 12px;
   letter-spacing: 0.18em;
 }
@@ -643,9 +716,12 @@ main {
 .video-modal {
   width: min(92vw, 620px);
   max-width: 620px;
+
   padding: 0;
   border: 0;
+
   background: #111;
+
   overflow: visible;
 }
 
@@ -656,11 +732,13 @@ main {
 .video-modal video {
   width: 100%;
   max-height: 90vh;
+
   background: #000;
 }
 
 .modal-close {
   position: absolute;
+
   right: -44px;
   top: -10px;
 
@@ -668,17 +746,20 @@ main {
   height: 36px;
 
   background: transparent;
+
   color: #fff;
   font-size: 34px;
   line-height: 1;
+
   cursor: pointer;
 }
 
 /* =========================================================
-   TABLET â€” 1000px
+   TABLET — 1000px
 ========================================================= */
 
 @media (max-width: 1000px) {
+
   :root {
     --nav-height: 70px;
   }
@@ -698,7 +779,11 @@ main {
 
   .hero-copy {
     min-height: 620px;
-    padding: calc(var(--nav-height) + 65px) 35px 70px;
+
+    padding:
+      calc(var(--nav-height) + 65px)
+      35px
+      70px;
   }
 
   .hero-logo {
@@ -734,8 +819,8 @@ main {
 
   .create-image,
   .contact-image {
-    height: 620px;
-    min-height: 620px;
+    height: 560px;
+    min-height: 560px;
   }
 
   .create-image {
@@ -758,10 +843,11 @@ main {
 }
 
 /* =========================================================
-   MOBILE â€” 720px
+   MOBILE — 720px
 ========================================================= */
 
 @media (max-width: 720px) {
+
   :root {
     --nav-height: 64px;
   }
@@ -788,45 +874,56 @@ main {
 
   .mobile-menu-button {
     display: flex;
+
     flex-direction: column;
     justify-content: center;
     gap: 5px;
 
     width: 40px;
     height: 40px;
+
     padding: 8px;
 
     background: transparent;
     color: #fff;
+
     cursor: pointer;
   }
 
   .mobile-menu-button span {
     display: block;
+
     width: 100%;
     height: 1.5px;
+
     background: currentColor;
   }
 
   .mobile-nav {
     position: absolute;
+
     top: var(--nav-height);
     left: 0;
     right: 0;
 
     display: flex;
+
     flex-direction: column;
 
     padding: 15px 20px 20px;
 
     background: #46352a;
+
     border-bottom: 1px solid rgba(255,255,255,0.18);
 
     opacity: 0;
     pointer-events: none;
+
     transform: translateY(-10px);
 
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
   }
 
   .mobile-nav.open {
@@ -837,8 +934,10 @@ main {
 
   .mobile-nav a {
     padding: 14px 5px;
+
     color: #fffaf0;
     text-decoration: none;
+
     font-family: var(--serif);
     font-size: 25px;
   }
@@ -851,6 +950,7 @@ main {
 
   .hero-copy {
     min-height: 500px;
+
     padding: 95px 22px 55px;
   }
 
@@ -1028,6 +1128,7 @@ main {
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+
   html {
     scroll-behavior: auto;
   }
