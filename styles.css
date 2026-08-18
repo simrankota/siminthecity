@@ -155,19 +155,12 @@ main {
 
   width: 100%;
 
-  /*
-    Keeps the hero close to viewport height without
-    allowing the image to become vertically oversized.
-  */
   height: 100vh;
   min-height: 760px;
   max-height: none;
 
   display: grid;
 
-  /*
-    Image is slightly wider than before.
-  */
   grid-template-columns:
     minmax(0, 1.32fr)
     minmax(450px, 1fr);
@@ -213,10 +206,6 @@ main {
   line-height: 1.05;
 }
 
-/*
-  Deliberately push the CTA lower without changing
-  the overall hero structure.
-*/
 .hero-copy .button {
   margin-top: 64px;
 }
@@ -285,11 +274,6 @@ main {
 .intro {
   width: 100%;
 
-  /*
-    Reduced from the previous version.
-    This is the primary fix for the excessive gap before
-    Selected Work.
-  */
   min-height: 330px;
 
   padding:
@@ -377,10 +361,6 @@ main {
 .work {
   width: 100%;
 
-  /*
-    Reduced top padding so Selected Work follows Intro
-    much sooner.
-  */
   padding:
     12px
     var(--page-padding)
@@ -419,27 +399,11 @@ main {
    REEL CARDS
 ========================================================= */
 
-/*
-  IMPORTANT:
-
-  These are intentionally NOT 9:16.
-
-  The previous version made them full-height rectangles.
-  We want a shorter vertical crop.
-
-  Every reel gets the exact same fixed ratio.
-*/
-
 .video-card {
   position: relative;
 
   width: 100%;
 
-  /*
-    Shorter than 9:16.
-    This gives the compact vertical look from the
-    reference screenshots.
-  */
   aspect-ratio: 4 / 5;
 
   height: auto;
@@ -469,9 +433,6 @@ main {
   width: 100%;
   height: 100%;
 
-  /*
-    SAME crop behavior on all three.
-  */
   object-fit: cover;
   object-position: center center;
 
@@ -658,9 +619,6 @@ main {
 .logo-item img {
   width: auto;
 
-  /*
-    Larger than the previous version.
-  */
   max-width: 100%;
 
   max-height: 115px;
@@ -670,6 +628,7 @@ main {
 
 .caro-logo {
   background-image: url("assets/cands.jpeg");
+
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -682,6 +641,7 @@ main {
 
 .caro-logo img {
   width: auto;
+
   max-width: 180px;
   max-height: 120px;
 }
@@ -715,9 +675,6 @@ main {
 
   height: 560px;
 
-  /*
-    Move the entire content upward slightly.
-  */
   padding:
     30px
     clamp(38px, 6vw, 90px);
@@ -925,6 +882,7 @@ main {
   height: 220px;
 
   margin: 0;
+
   padding: 45px 30px;
 
   display: flex;
@@ -1245,11 +1203,13 @@ main {
     gap: 42px;
   }
 
-  /*
-    Same shortened crop on mobile.
-  */
   .video-card {
-    aspect-ratio: 0.78 / 1;
+    /*
+      Shorter mobile reel frame.
+    */
+    aspect-ratio: auto;
+
+    height: 420px;
   }
 
   .category {
@@ -1399,6 +1359,254 @@ main {
 
 
 /* =========================================================
+   DESKTOP FINAL VALUES
+========================================================= */
+
+@media (min-width: 721px) {
+
+  /* -------------------------
+     NAV
+  ------------------------- */
+
+  .site-nav {
+    background:
+      linear-gradient(
+        90deg,
+        #211710 0%,
+        #3d2a1e 48%,
+        #624633 100%
+      ) !important;
+
+    color: #fff8ec;
+  }
+
+  .nav-brand {
+    width: 78px;
+    height: 78px;
+  }
+
+  .nav-brand img {
+    width: 72px;
+    height: 72px;
+  }
+
+
+  /* -------------------------
+     HERO
+  ------------------------- */
+
+  .hero {
+    width: 100%;
+
+    height: 100vh;
+
+    min-height: 760px;
+
+    max-height: none;
+
+    /*
+      The photo now gets significantly more
+      horizontal real estate.
+    */
+    grid-template-columns:
+      minmax(0, 1.22fr)
+      minmax(500px, 1fr);
+  }
+
+  .hero-copy {
+    height: 100%;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  /*
+    Move CTA substantially lower.
+  */
+  .hero-copy .button {
+    margin-top: 82px;
+  }
+
+
+  /* -------------------------
+     INTRO → SELECTED WORK
+  ------------------------- */
+
+  .intro {
+    min-height: 285px;
+
+    padding:
+      32px
+      var(--page-padding)
+      24px;
+  }
+
+  .intro h2 {
+    margin-bottom: 20px;
+  }
+
+  .intro-copy p {
+    margin-bottom: 18px;
+  }
+
+  .work {
+    padding:
+      0
+      var(--page-padding)
+      78px;
+  }
+
+  .work .section-heading {
+    margin-bottom: 42px;
+  }
+
+
+  /* -------------------------
+     THREE FEATURED REELS
+  ------------------------- */
+
+  /*
+    IMPORTANT:
+
+    Do NOT use aspect-ratio here.
+
+    The three featured cards have an explicit
+    fixed height so they are physically shorter
+    regardless of the source video's dimensions.
+  */
+
+  .cards.featured {
+    align-items: start;
+  }
+
+  .cards.featured .video-card {
+    width: 100%;
+
+    height: 360px;
+
+    aspect-ratio: auto;
+
+    min-height: 0;
+
+    overflow: hidden;
+  }
+
+  .cards.featured .video-card video,
+  .cards.featured .work-card video {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center center;
+  }
+
+
+  /* -------------------------
+     COLLABORATION LOGOS
+  ------------------------- */
+
+  .logo-item img {
+    max-height: 125px;
+  }
+
+  .caro-logo {
+    background-image: url("assets/cands.jpeg");
+
+    background-repeat: no-repeat;
+
+    background-position: center;
+
+    background-size: contain;
+  }
+
+  .caro-logo span,
+  .caro-logo small {
+    display: none;
+  }
+
+  .caro-logo img {
+    max-width: 190px;
+    max-height: 125px;
+  }
+
+
+  /* -------------------------
+     WHAT I CREATE
+  ------------------------- */
+
+  .create,
+  .create-copy,
+  .create-image {
+    height: 560px;
+    min-height: 560px;
+  }
+
+  .create-copy {
+    padding-top: 0;
+    padding-bottom: 30px;
+
+    justify-content: flex-start;
+  }
+
+  .create-copy .section-heading {
+    margin-top: 0;
+
+    margin-bottom: 30px;
+  }
+
+  .create-copy .section-heading h2 {
+    margin-top: 0;
+  }
+
+
+  /* -------------------------
+     CONTACT
+  ------------------------- */
+
+  .contact,
+  .contact-image,
+  .contact-copy {
+    height: 560px;
+    min-height: 560px;
+  }
+
+  .contact-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+  .contact-copy {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .contact {
+    margin-bottom: 0;
+  }
+
+  .site-footer {
+    margin-top: 0;
+  }
+}
+
+
+/* =========================================================
    REDUCED MOTION
 ========================================================= */
 
@@ -1414,72 +1622,4 @@ main {
     animation: none !important;
     transition: none !important;
   }
-}
-
-
-/* =========================================================
-   DESKTOP FINAL VALUES
-   ========================================================= */
-@media (min-width: 721px) {
-  .site-nav {
-    background: linear-gradient(90deg, var(--header-dark) 0%, var(--header-mid) 52%, var(--header-light) 100%);
-  }
-
-  .nav-brand { width: 70px; height: 70px; }
-  .nav-brand img { width: 64px; height: 64px; }
-
-  .hero {
-    height: 100vh;
-    min-height: 760px;
-    max-height: none;
-    grid-template-columns: minmax(0, 1.32fr) minmax(450px, 1fr);
-  }
-
-  .hero-copy .button { margin-top: 64px; }
-
-  .intro {
-    min-height: 330px;
-    padding: 44px var(--page-padding) 30px;
-  }
-
-  .work {
-    padding: 12px var(--page-padding) 80px;
-  }
-
-  .cards.featured .video-card,
-  .cards.two-cards .video-card {
-    aspect-ratio: 4 / 5;
-    height: auto;
-  }
-
-  .cards.featured .video-card video,
-  .cards.two-cards .video-card video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .logo-item img { max-height: 115px; }
-  .caro-logo {
-    background-image: url("assets/cands.jpeg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-  }
-  .caro-logo span, .caro-logo small { display: none; }
-
-  .create, .create-copy, .create-image {
-    height: 560px;
-    min-height: 560px;
-  }
-  .create-copy { padding-top: 30px; }
-
-  .contact, .contact-image, .contact-copy {
-    height: 560px;
-    min-height: 560px;
-  }
-  .contact-copy { padding-top: 48px; padding-bottom: 48px; }
-
-  .contact { margin-bottom: 0; }
-  .site-footer { margin-top: 0; }
 }
