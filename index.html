@@ -1,153 +1,700 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Sim in the City — Travel, Hospitality, Experiences." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Sim in the City — travel, hospitality and experiences. Short-form video, photography and UGC brand content."
+  >
+
   <title>Sim in the City | Travel · Hospitality · Experiences</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
   <header class="site-nav" id="site-nav">
+
     <a class="nav-brand" href="#top" aria-label="Sim in the City home">
-      <img src="assets/logo-mark.svg" alt="" />
+      <img src="assets/SITC_Logo_Icon.png" alt="Sim in the City">
     </a>
-    <nav aria-label="Primary">
-      <a href="#work">Work</a><span>•</span>
-      <a href="#collaborations">Collaborations</a><span>•</span>
-      <a href="#what-i-create">What I Create</a><span>•</span>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#work">Work</a>
+      <span>•</span>
+      <a href="#collaborations">Collaborations</a>
+      <span>•</span>
+      <a href="#what-i-create">What I Create</a>
+      <span>•</span>
       <a href="#contact">Contact</a>
     </nav>
+
+    <button class="mobile-menu-button" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="#work">Work</a>
+      <a href="#collaborations">Collaborations</a>
+      <a href="#what-i-create">What I Create</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
   </header>
 
+
   <main id="top">
-    <section class="hero section-grid">
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
       <div class="hero-copy">
-        <div class="hero-logo">
-          <img src="assets/logo-full.svg" alt="Sim in the City — Travel, Hospitality, Experiences" />
-        </div>
-        <p class="tagline">Places worth traveling for</p>
-        <a class="button" href="#work">Explore My Work →</a>
+
+        <img
+          class="hero-logo"
+          src="assets/SITC_Logo_Full.png"
+          alt="Sim in the City — Travel, Hospitality, Experiences"
+        >
+
+        <p class="hero-tagline">
+          Places worth traveling for
+        </p>
+
+        <a class="button" href="#work">
+          Explore My Work →
+        </a>
+
       </div>
+
       <div class="hero-image">
-        <img src="assets/hero.jpg" alt="Sim in a luxury hospitality setting" />
+        <img
+          src="assets/sim_hotel_lobby.jpeg"
+          alt="Sim in a luxury hospitality setting"
+        >
       </div>
+
     </section>
 
-    <section class="intro section" id="about">
-      <h2>Beautiful enough to inspire.<br>Useful enough to save.</h2>
+
+    <!-- =========================
+         INTRO
+    ========================== -->
+
+    <section class="intro section">
+
+      <h2>
+        Beautiful enough to inspire.<br>
+        Useful enough to save.
+      </h2>
+
       <div class="intro-copy">
-        <p>I create cinematic stories around the hotels, restaurants and experiences that make a trip memorable — with a personal point of view and recommendations I genuinely stand behind.</p>
-        <p>My content is designed to do two things: make you want to be there, and help you decide where to go when you get there.</p>
+
+        <p>
+          I create cinematic stories around the hotels, restaurants and
+          experiences that make a trip memorable — with a personal point
+          of view and recommendations I genuinely stand behind.
+        </p>
+
+        <p>
+          My content is designed to do two things: make you want to be there,
+          and help you decide where to go when you get there.
+        </p>
+
       </div>
+
     </section>
+
+
+    <!-- =========================
+         SELECTED WORK
+    ========================== -->
 
     <section class="section work" id="work">
+
       <div class="section-heading">
+
         <h2>Selected Work</h2>
-        <p>Cinematic stories from places worth experiencing.</p>
+
+        <p>
+          Cinematic stories from places worth experiencing.
+        </p>
+
       </div>
+
+
+      <!-- FEATURED ROW -->
 
       <div class="cards featured">
+
         <article class="work-card">
-          <button class="video-card" data-video="assets/caro-selig.mp4" aria-label="Play Caro & Selig">
-            <img src="assets/caro-selig.jpg" alt="Caro & Selig" /><span class="play">▶</span>
+
+          <button
+            class="video-card"
+            data-video="assets/caroselig.mp4"
+            aria-label="Play Caro & Selig Reel"
+          >
+
+            <video
+              src="assets/caroselig.mp4"
+              muted
+              autoplay
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+
+            <span class="video-overlay"></span>
+            <span class="play">▶</span>
+
           </button>
-          <h3>Caro &amp; Selig</h3><em>Bavaria, Germany · Hotel &amp; Stay</em>
+
+          <h3>Caro &amp; Selig</h3>
+          <em>Bavaria, Germany · Hotel &amp; Stay</em>
+
         </article>
+
+
         <article class="work-card">
-          <button class="video-card" data-video="assets/laperouse.mp4" aria-label="Play Lapérouse">
-            <img src="assets/laperouse.jpg" alt="Lapérouse" /><span class="play">▶</span>
+
+          <button
+            class="video-card"
+            data-video="assets/laperouse.mp4"
+            aria-label="Play Lapérouse Reel"
+          >
+
+            <video
+              src="assets/laperouse.mp4"
+              muted
+              autoplay
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+
+            <span class="video-overlay"></span>
+            <span class="play">▶</span>
+
           </button>
-          <h3>Lapérouse</h3><em>Paris, France · Food &amp; Beverage</em>
+
+          <h3>Lapérouse</h3>
+          <em>Paris, France · Food &amp; Beverage</em>
+
         </article>
+
+
         <article class="work-card">
-          <button class="video-card" data-video="assets/chicago-sailing.mp4" aria-label="Play Chicago Sailing">
-            <img src="assets/chicago-sailing.jpg" alt="Chicago Sailing" /><span class="play">▶</span>
+
+          <button
+            class="video-card"
+            data-video="assets/getmyboat.mp4"
+            aria-label="Play Chicago Sailing Reel"
+          >
+
+            <video
+              src="assets/getmyboat.mp4"
+              muted
+              autoplay
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+
+            <span class="video-overlay"></span>
+            <span class="play">▶</span>
+
           </button>
-          <h3>Chicago Sailing</h3><em>Chicago, Illinois · Experience</em>
+
+          <h3>Chicago Sailing</h3>
+          <em>Chicago, Illinois · Experience</em>
+
         </article>
+
       </div>
 
+
+      <!-- =========================
+           HOTELS & STAYS
+      ========================== -->
+
       <div class="category">
-        <div class="section-heading small"><h2>Hotels &amp; Stays</h2><p>Properties and stays worth making part of the journey.</p></div>
-        <div class="cards">
+
+        <div class="section-heading small">
+          <h2>Hotels &amp; Stays</h2>
+          <p>Properties and stays worth making part of the journey.</p>
+        </div>
+
+        <div class="cards two-cards">
+
           <article class="work-card">
-            <button class="video-card" data-video="assets/hotel-1.mp4" aria-label="Play hotel Reel"><img src="assets/hotel-1.jpg" alt="Hotel feature" /><span class="play">▶</span></button>
-            <h3>Anantara New York Palace</h3><em>Budapest, Hungary</em>
+
+            <button
+              class="video-card"
+              data-video="assets/anantara.mp4"
+              aria-label="Play Anantara New York Palace Reel"
+            >
+
+              <video
+                src="assets/anantara.mp4"
+                muted
+                autoplay
+                loop
+                playsinline
+                preload="metadata"
+              ></video>
+
+              <span class="video-overlay"></span>
+              <span class="play">▶</span>
+
+            </button>
+
+            <h3>Anantara New York Palace</h3>
+            <em>Budapest, Hungary</em>
+
           </article>
+
+
           <article class="work-card">
-            <button class="video-card" data-video="assets/hotel-2.mp4" aria-label="Play hotel Reel"><img src="assets/hotel-2.jpg" alt="Hotel feature" /><span class="play">▶</span></button>
-            <h3>Aluna</h3><em>Tulum, Mexico</em>
+
+            <button
+              class="video-card"
+              data-video="assets/aluna_tulum.mp4"
+              aria-label="Play Aluna Reel"
+            >
+
+              <video
+                src="assets/aluna_tulum.mp4"
+                muted
+                autoplay
+                loop
+                playsinline
+                preload="metadata"
+              ></video>
+
+              <span class="video-overlay"></span>
+              <span class="play">▶</span>
+
+            </button>
+
+            <h3>Aluna</h3>
+            <em>Tulum, Mexico</em>
+
           </article>
+
         </div>
+
       </div>
 
-      <div class="category">
-        <div class="section-heading small"><h2>Food &amp; Beverage</h2><p>Places worth lingering over.</p></div>
-        <div class="cards">
-          <article class="work-card"><button class="video-card" data-video="assets/ciccio-mio.mp4"><img src="assets/ciccio-mio.jpg" alt="Ciccio Mio" /><span class="play">▶</span></button><h3>Ciccio Mio</h3><em>Chicago, Illinois · USA</em></article>
-          <article class="work-card"><button class="video-card" data-video="assets/naia.mp4"><img src="assets/naia.jpg" alt="NAIA" /><span class="play">▶</span></button><h3>NAIA</h3><em>Chicago, Illinois · USA</em></article>
-          <article class="work-card"><button class="video-card" data-video="assets/after.mp4"><img src="assets/after.jpg" alt="After" /><span class="play">▶</span></button><h3>After</h3><em>Chicago, Illinois · USA</em></article>
-        </div>
-      </div>
+
+      <!-- =========================
+           FOOD & BEVERAGE
+      ========================== -->
 
       <div class="category">
-        <div class="section-heading small"><h2>Experiences</h2><p>Moments worth remembering.</p></div>
-        <div class="cards">
-          <article class="work-card"><button class="video-card" data-video="assets/leaf-spa.mp4"><img src="assets/leaf-spa.jpg" alt="Fairmont Leaf Spa" /><span class="play">▶</span></button><h3>Fairmont Leaf Spa</h3><em>Chicago, Illinois · USA</em></article>
-          <article class="work-card"><button class="video-card" data-video="assets/chicago-cultural-center.mp4"><img src="assets/chicago-cultural-center.jpg" alt="Chicago Cultural Center" /><span class="play">▶</span></button><h3>Chicago Cultural Center</h3><em>Chicago, Illinois · USA</em></article>
+
+        <div class="section-heading small">
+          <h2>Food &amp; Beverage</h2>
+          <p>Places worth lingering over.</p>
         </div>
+
+        <div class="cards">
+
+          <article class="work-card">
+
+            <button
+              class="video-card"
+              data-video="assets/ciccio_mio.mp4"
+              aria-label="Play Ciccio Mio Reel"
+            >
+
+              <video
+                src="assets/ciccio_mio.mp4"
+                muted
+                autoplay
+                loop
+                playsinline
+                preload="metadata"
+              ></video>
+
+              <span class="video-overlay"></span>
+              <span class="play">▶</span>
+
+            </button>
+
+            <h3>Ciccio Mio</h3>
+            <em>Chicago, Illinois · USA</em>
+
+          </article>
+
+
+          <article class="work-card">
+
+            <button
+              class="video-card"
+              data-video="assets/Naia.mp4"
+              aria-label="Play NAIA Reel"
+            >
+
+              <video
+                src="assets/Naia.mp4"
+                muted
+                autoplay
+                loop
+                playsinline
+                preload="metadata"
+              ></video>
+
+              <span class="video-overlay"></span>
+              <span class="play">▶</span>
+
+            </button>
+
+            <h3>NAIA</h3>
+            <em>Chicago, Illinois · USA</em>
+
+          </article>
+
+
+          <article class="work-card">
+
+            <button
+              class="video-card"
+              data-video="assets/after.mp4"
+              aria-label="Play After Reel"
+            >
+
+              <video
+                src="assets/after.mp4"
+                muted
+                autoplay
+                loop
+                playsinline
+                preload="metadata"
+              ></video>
+
+              <span class="video-overlay"></span>
+              <span class="play">▶</span>
+
+            </button>
+
+            <h3>After</h3>
+            <em>Chicago, Illinois · USA</em>
+
+          </article>
+
+        </div>
+
       </div>
+
+
+      <!-- =========================
+           EXPERIENCES
+      ========================== -->
+
+      <div class="category">
+
+        <div class="section-heading small">
+          <h2>Experiences</h2>
+          <p>Moments worth remembering.</p>
+        </div>
+
+        <div class="cards two-cards">
+
+          <article class="work-card">
+
+            <button
+              class="video-card"
+              data-video="assets/leafspa.mp4"
+              aria-label="Play Fairmont Leaf Spa Reel"
+            >
+
+              <video
+                src="assets/leafspa.mp4"
+                muted
+                autoplay
+                loop
+                playsinline
+                preload="metadata"
+              ></video>
+
+              <span class="video-overlay"></span>
+              <span class="play">▶</span>
+
+            </button>
+
+            <h3>Fairmont Leaf Spa</h3>
+            <em>Chicago, Illinois · USA</em>
+
+          </article>
+
+
+          <article class="work-card">
+
+            <button
+              class="video-card"
+              data-video="assets/Chicago_Cultural_Center.mp4"
+              aria-label="Play Chicago Cultural Center Reel"
+            >
+
+              <video
+                src="assets/Chicago_Cultural_Center.mp4"
+                muted
+                autoplay
+                loop
+                playsinline
+                preload="metadata"
+              ></video>
+
+              <span class="video-overlay"></span>
+              <span class="play">▶</span>
+
+            </button>
+
+            <h3>Chicago Cultural Center</h3>
+            <em>Chicago, Illinois · USA</em>
+
+          </article>
+
+        </div>
+
+      </div>
+
     </section>
+
+
+    <!-- =========================
+         SELECTED COLLABORATIONS
+    ========================== -->
 
     <section class="section collaborations" id="collaborations">
-      <div class="section-heading"><h2>Selected Collaborations</h2><p>Independent content shared through Instagram Collabs.</p></div>
-      <div class="logos">
-        <img src="assets/logo-getmyboat.png" alt="Getmyboat">
-        <img src="assets/logo-leaf.png" alt="Leaf Spas">
-        <img src="assets/logo-vinyl.png" alt="Vinyl Pilates">
-        <img src="assets/logo-arla.png" alt="Arla">
-        <img src="assets/logo-bratislava.png" alt="Visit Bratislava">
-        <img src="assets/logo-caro-selig.png" alt="Caro & Selig">
-        <img src="assets/logo-shops-northbridge.png" alt="The Shops at North Bridge">
+
+      <div class="section-heading">
+
+        <h2>Selected Collaborations</h2>
+
+        <p>
+          Independent content shared through Instagram Collabs.
+        </p>
+
       </div>
+
+
+      <div class="logos">
+
+        <div class="logo-item">
+          <img src="assets/getmyboat.png" alt="GetMyBoat">
+        </div>
+
+        <div class="logo-item">
+          <img src="assets/leafspa.png" alt="Leaf Spas">
+        </div>
+
+        <div class="logo-item">
+          <img src="assets/vinylpilates.webp" alt="Vinyl Pilates">
+        </div>
+
+        <div class="logo-item">
+          <img src="assets/arla.avif" alt="Arla">
+        </div>
+
+        <div class="logo-item">
+          <img src="assets/bratislava.png" alt="Visit Bratislava">
+        </div>
+
+        <div class="logo-item caro-logo" aria-label="Caro & Selig">
+          <span>Caro</span>
+          <small>&amp;</small>
+          <span>Selig</span>
+        </div>
+
+        <div class="logo-item">
+          <img src="assets/northbridge.jpeg" alt="The Shops at North Bridge">
+        </div>
+
+      </div>
+
     </section>
+
+
+    <!-- =========================
+         WHAT I CREATE
+    ========================== -->
 
     <section class="section create section-split" id="what-i-create">
-      <div>
-        <div class="section-heading left"><h2>What I Create</h2><p>Content designed to make people stop, save and book.</p></div>
-        <div class="offer">
-          <h3>Short-Form Video</h3><p>Cinematic vertical video designed for organic social, paid campaigns and digital marketing.</p>
-          <h3>Photography</h3><p>Lifestyle, hospitality, food, interiors and destination imagery built for social and digital use.</p>
-          <h3>UGC &amp; Brand Content</h3><p>Story-driven content created specifically for your brand to use across its own channels.</p>
+
+      <div class="create-copy">
+
+        <div class="section-heading left">
+
+          <h2>What I Create</h2>
+
+          <p>
+            Content designed to make people stop, save and book.
+          </p>
+
         </div>
+
+
+        <div class="offer">
+
+          <div class="offer-item">
+            <h3>Short-Form Video</h3>
+            <p>
+              Cinematic vertical video designed for organic social,
+              paid campaigns and digital marketing.
+            </p>
+          </div>
+
+
+          <div class="offer-item">
+            <h3>Photography</h3>
+            <p>
+              Lifestyle, hospitality, food, interiors and destination
+              imagery built for social and digital use.
+            </p>
+          </div>
+
+
+          <div class="offer-item">
+            <h3>UGC &amp; Brand Content</h3>
+            <p>
+              Story-driven content created specifically for your brand
+              to use across its own channels.
+            </p>
+          </div>
+
+        </div>
+
       </div>
-      <img src="assets/creator.jpg" alt="Sim creating travel and hospitality content">
+
+
+      <div class="create-image">
+        <img
+          src="assets/red_dress_rooftop.jpg"
+          alt="Sim creating travel and hospitality content"
+        >
+      </div>
+
     </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
 
     <section class="section contact section-split" id="contact">
-      <img src="assets/contact.jpg" alt="Travel dining experience">
-      <div class="contact-copy">
-        <h2>Let’s Create Something<br>Worth Traveling For</h2>
-        <p>Have a property, destination, restaurant, experience or brand you’d like to bring to life? I’d love to hear from you.</p>
-        <div class="contact-links">
-          <a href="mailto:hello@siminthecity.com"><small>Email</small><span>hello@siminthecity.com</span></a>
-          <a href="https://instagram.com/siminthecity" target="_blank" rel="noopener"><small>Instagram</small><span>@siminthecity</span></a>
-        </div>
-        <a class="button" href="mailto:hello@siminthecity.com">Get in Touch →</a>
+
+      <div class="contact-image">
+        <img
+          src="assets/hawaii_dining.jpeg"
+          alt="Travel dining experience"
+        >
       </div>
+
+
+      <div class="contact-copy">
+
+        <h2>
+          Let’s Create Something<br>
+          Worth Traveling For
+        </h2>
+
+        <p>
+          Have a property, destination, restaurant, experience or brand
+          you’d like to bring to life? I’d love to hear from you.
+        </p>
+
+
+        <div class="contact-links">
+
+          <a href="mailto:hello@siminthecity.com">
+            <small>Email</small>
+            <span>hello@siminthecity.com</span>
+          </a>
+
+          <a
+            href="https://instagram.com/siminthecity"
+            target="_blank"
+            rel="noopener"
+          >
+            <small>Instagram</small>
+            <span>@siminthecity</span>
+          </a>
+
+        </div>
+
+
+        <a
+          class="button"
+          href="mailto:hello@siminthecity.com"
+        >
+          Get in Touch →
+        </a>
+
+      </div>
+
     </section>
+
+
   </main>
 
+
+  <!-- =========================
+       VIDEO MODAL
+  ========================== -->
+
   <dialog id="video-modal" class="video-modal">
-    <button class="modal-close" aria-label="Close">×</button>
-    <video id="modal-video" controls playsinline></video>
+
+    <button
+      class="modal-close"
+      aria-label="Close video"
+    >
+      ×
+    </button>
+
+    <video
+      id="modal-video"
+      controls
+      playsinline
+    ></video>
+
   </dialog>
 
+
+  <footer class="site-footer">
+
+    <img
+      src="assets/SITC_Logo_Footer.png"
+      alt="Sim in the City"
+    >
+
+    <p>
+      Travel ✦ Hospitality ✦ Experiences
+    </p>
+
+  </footer>
+
+
   <script src="script.js"></script>
+
 </body>
 </html>
